@@ -1,0 +1,5 @@
+db.jdbcUrl=jdbc:mysql://127.0.0.1:3306/test
+db.user=leon
+db.password=leon
+db.driverClass=com.mysql.jdbc.Driver
+db.maxIdleTime=3600

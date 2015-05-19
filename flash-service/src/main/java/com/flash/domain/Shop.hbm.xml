@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.flash.domain.Shop" table="shop" lazy="true" select-before-update="true" dynamic-update="true">
+		<id name="id" column="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="name" column="name" length="20"></property>
+		<property name="intro" column="shop_intro" length="300"></property>
+		
+		<property name="linkManName" column="shop_linkmanname" length="5" ></property>
+		<property name="linkMobile" column="shop_linkmobile" length="11"></property>
+		<property name="shopTel" column="shop_tel" length="11"></property>
+		<property name="shopEmail" column="shop_email" length="30"></property>
+		<property name="shopAddr" column="shop_addr" length="30"></property>
+		<property name="sendPriceUp">
+			<column name="shop_sendpriceup" sql-type="double(8,2)" default="0.0"></column>
+		</property>
+		<!-- 平均送餐时间 -->
+		<property name="averageSendTime">
+			<column name="shop_average_sendtime" default="30" length="3"></column>
+		</property>
+		<!-- 店铺状态 0 关闭 1 打开 2 其他 -->
+		<property name="shopStatus">
+			<column name="shop_status" length="1" default="1"></column>
+		</property>
+		<!-- 店铺图片 -->
+		<property name="shopPic" column="shop_pic" length="100" not-null="false"></property>
+		<!-- 店铺模式 -->
+		<property name="shopPattern">
+			<column name="shop_pattern" length="1" default="0"></column>
+		</property>
+		<!-- 访问量 -->
+		<property name="visitCounts">
+			<column name="shop_visitcounts" default="0"></column>
+		</property>
+		<!-- 共下单次数 -->
+		<property name="soldCount">
+			<column name="shop_soldcount" default="0"></column>
+		</property>
+		<!-- 是否支持优惠券购买 -->
+		<property name="supportCoupon">
+			<column name="shop_supportcoupon" default="false"></column>
+		</property>
+		<!-- 是否支持在线支付 -->
+		<property name="onlinePayment">
+			<column name="shop_online_payment" default="false"></column>
+		</property>
+		<!-- 是否支持在线预定 -->
+		<property name="supportBook">
+			<column name="shop_supportbook" default="false"></column>
+		</property>
+		<!-- 是否删除 -->
+		<property name="isDel">
+			<column name="shop_isdel" default="false"></column>
+		</property>
+		<property name="recommend">
+			<column name="shop_isrecommend" default="0" length="1"></column>
+		</property>
+		<!-- 拼音 -->
+		<property name="shopPin" >
+			<column name="shop_pin" length="10" not-null="false"></column>
+		</property>
+		<!-- 店铺描述 -->
+		<property name="shopDescription">
+			<column name="shop_description" sql-type="text" not-null="false"></column>
+		</property>
+		<!-- 店铺公告 -->
+		<property name="notice" column="shop_notice"></property>
+		<!-- 起送价格 -->
+		<property name="sendPrice">
+			<column name="shop_sendprice" sql-type="double(10,2)" default="0.0"/>
+		</property>
+		<!-- 起送距离 -->
+		<property name="sendDistance">
+			<column name="shop_send_distance" sql-type="double(10,2)" default="0.0"/>
+		</property>
+		<!-- 店铺类型 -->
+		<property name="shopType">
+			<column name="shop_type" length="2" not-null="false" default="1"/>
+		</property>
+		<!-- 是否下单验证 -->
+		<property name="isSmsCheck">
+			<column name="shop_issmscheck" length="1" default="0"/>
+		</property>
+		<!-- 百度地图api -->
+		<property name="shopLng">
+			<column name="shop_lng" sql-type="double" default="0.000"></column>
+		</property>
+		<!-- 百度地图api -->
+		<property name="shopLat">
+			<column name="shop_lat" sql-type="double" default="0.000"></column>
+		</property>
+		<!-- 店铺：用户  一对一 一个店铺对应一个管理员 -->
+		<many-to-one name="shopAdmin" class="com.waimaizhuanjia.ucenter.domain.User" cascade="none" lazy="proxy" >
+			<column name="shop_admin_id" ></column>
+		</many-to-one>
+		<!-- 店铺：商品  一个店铺对应多个商品 -->
+		<set name="products" cascade="delete" inverse="true">
+			<key>
+				<column name="product_shop_id"></column>
+			</key>
+			<one-to-many class="com.waimaizhuanjia.dc.product.domain.Product"/>
+		</set>
+		<!-- 店铺：文章 -->
+		<set name="articles" order-by="addTime" cascade="delete" inverse="true">
+			<key>
+				<column name="article_shop_id"></column>
+			</key>
+			<one-to-many class="com.waimaizhuanjia.dc.article.domain.Article"/>
+		</set>
+		<!-- 商品分组  店铺：分组  一对多 -->
+		<set name="productGroups" order-by="id" cascade="delete" inverse="true">
+			<key>
+				<column name="group_shop_id"></column>
+			</key>
+			<one-to-many class="com.waimaizhuanjia.dc.product.domain.ProductGroup"/>
+		</set>
+		<!-- 订单 -->
+		<set name="orders" order-by="orderTime" cascade="none" inverse="true" lazy="true">
+			<key>
+				<column name="order_shop_id"></column>
+			</key>
+			<one-to-many class="com.waimaizhuanjia.dc.order.domain.Order"/>
+		</set>
+		<!-- 店铺：收藏的用户 -->
+		<set name="favorUsers" table="dc_user_favor_shop" cascade="none" lazy="true" inverse="true">
+			<key>
+				<column name="shop_id"></column>
+			</key>
+			<many-to-many class="com.waimaizhuanjia.ucenter.domain.User" column="user_id"></many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>

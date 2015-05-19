@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.flash.domain.Privilege" table="dc_member_privilege" dynamic-update="true">
+		<id name="id" length="10" column="privilege_id">
+			<generator class="native"></generator>
+		</id>
+		<property name="pid" length="10" column="privilege_pid"></property>
+		<property name="name" length="20" column="privilege_name" unique="true"></property>
+		<property name="sign" length="20" column="privilege_sign" unique="true"></property>
+		<property name="icon" length="30" column="privilege_icon" not-null="false"></property>
+		<property name="url" column="privilege_url"></property>
+		<property name="target" length="10" column="privilege_target" not-null="false"></property>
+		<property name="isParent">
+			<column name="privilege_isparent" default="false" not-null="false"> </column>
+		</property>
+		<property name="type" length="2" column="privilege_type"></property>
+		<!-- 角色：权限   多对多，一个角色对应多个权限
+		<set name="roles"  table="dc_member_role_privileges" cascade="none" inverse="true" lazy="true">
+			<key>
+				<column name="privilege_id" ></column>
+			</key>
+			<many-to-many class="com.waimaizhuanjia.dc.privilege.domain.Role" column="role_id"></many-to-many>
+		</set> -->
+	</class>
+</hibernate-mapping>

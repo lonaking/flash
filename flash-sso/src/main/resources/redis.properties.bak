@@ -1,0 +1,9 @@
+redis.pool.maxIdle=20
+redis.pool.minIdle=10
+redis.pool.maxWaitMillis=2000
+redis.pool.testOnBorrow=true
+redis.pool.testOnReturn=true
+redis.pool.maxActive=60
+redis.node1.timeout=2000
+redis.node1.host=127.0.0.1
+redis.node1.port=6379

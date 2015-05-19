@@ -1,0 +1,6 @@
+http.request.connectionRequestTimeout=500
+http.request.connectTimeout=5000
+http.request.socketTimeout=30000
+http.request.staleConnectionCheckEnabled=true
+http.pool.maxTotal=200
+http.pool.defaultMaxPerRoute=100

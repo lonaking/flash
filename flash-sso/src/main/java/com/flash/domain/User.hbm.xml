@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.flash.domain.User" table="dc_user" dynamic-update="true" select-before-update="true" lazy="true">
+		<id name="id" column="user_id">
+			<generator class="native"></generator>
+		</id>
+		<!-- 登录名 -->
+		<property name="loginName" column="user_loginname" length="10" unique="true" not-null="true"></property>
+		<!-- 密码 -->
+		<property name="password" column="user_password" length="32" not-null="true"></property>
+		<!-- 密码加密值 -->
+		<property name="passwordKey" column="user_password_key" length="4" not-null="false"></property>
+		<!-- 邮箱 -->
+		<property name="email" column="user_email" length="30" unique="true"></property>
+		<!-- 邮箱验证状态  1为验证-->
+		<property name="emailVerify">
+			<column name="user_emailverify" length="1" default="0"></column>
+		</property>
+		<!-- 邮箱验证码 -->
+		<property name="emailCheckCode" column="user_emailcheckcode" length="40" not-null="false"></property>
+		<!-- 电话 -->
+		<property name="tel" column="user_tel" length="11"></property>
+		
+		<property name="mobile" column="user_mobile" length="11"></property>
+		<!-- 手机验证状态 1为验证 默认为0 -->
+		<property name="mobileVerify">
+			<column name="user_mobileverify"  length="1" not-null="false" default="0"></column>
+		</property>
+		
+		<property name="nickName" column="user_nickname" length="10"></property>
+
+		<property name="realName" column="user_realName" length="10"></property>
+
+		<property name="headimg" column="user_headimg" length="100"></property>
+		<!-- 性别 1为男 2为女 默认为1-->
+		<property name="sex">
+			<column name="user_sex" not-null="false" default="1"></column>
+		</property>
+		<!-- 生日 -->
+		<property name="birthday">
+			<column name="user_birthday" sql-type="date"></column>
+		</property>
+		<!-- 家乡 -->
+		<property name="homeTown" column="user_hometown" length="100"></property>
+		<!-- 地址 -->
+		<property name="addr" column="user_addr" length="100"></property>
+		<!-- 用户状态 1为默认  -->
+		<property name="status">
+			<column name="user_userstatus" length="1" default="1"></column>
+		</property>
+		<!-- 积分 -->
+		<property name="score">
+			<column name="user_score" default="0"></column>
+		</property>
+		<!-- 经验 -->
+		<property name="experience">
+			<column name="user_experience" default="0"></column>
+		</property>
+		<!-- 账户金额 -->
+		<property name="money">
+			<column name="user_money" sql-type="double(8,2)" default="0"/>
+		</property>
+		
+		<property name="regTime" update="false">
+			<column name="user_regtime" sql-type="timestamp"></column>
+		</property>
+		<property name="lastLoginTime">
+			<column name="user_lastlogintime" sql-type="timestamp"/>
+		</property>
+		
+		<property name="lastLoginIp">
+			<column name="user_lastloginip" length="15" default="'0.0.0.0'"/>
+		</property>
+		
+		<property name="regIp" update="false">
+			<column name="user_regip" length="15" default="'0.0.0.0'" />
+		</property>
+		
+		<property name="isDel">
+			<column name="user_isdel" default="false" ></column>
+		</property>
+		
+		<!-- 用户：角色 一对一 -->
+		<many-to-one name="role" class="com.flash.domain.Role" lazy="false" column="user_role_id" cascade="none" fetch="join"></many-to-one>
+	</class>
+</hibernate-mapping>

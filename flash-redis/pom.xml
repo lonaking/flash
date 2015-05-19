@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.flash</groupId>
+		<artifactId>flash-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>flash-redis</artifactId>
+	<name>flash-redis</name>
+
+	<properties>
+		<jedis.version>2.6.0</jedis.version>
+	</properties>
+
+	<dependencies>
+		<!-- redis -->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>${jedis.version}</version>
+		</dependency>
+		<!-- commons -->
+		<dependency>
+			<groupId>com.flash</groupId>
+			<artifactId>flash-commons</artifactId>
+			<version>${flash.version}</version>
+		</dependency>
+	</dependencies>
+</project>
