@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.flash.domain;
+package com.flash.ucenter.domain;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -18,6 +18,7 @@ public class User implements Serializable {
 	private int id;
 	private String loginName;
 	private String password;
+	private String passwordKey;
 	private String email;
 	private int emailVerify;
 	private String emailCheckCode;
@@ -62,6 +63,14 @@ public class User implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getPasswordKey() {
+		return passwordKey;
+	}
+
+	public void setPasswordKey(String passwordKey) {
+		this.passwordKey = passwordKey;
 	}
 
 	public String getEmail() {

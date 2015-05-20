@@ -22,7 +22,10 @@ public class Product implements Serializable {
 	 * 商品名
 	 */
 	private String name;
-	private String barCode;//条形码
+	/**
+	 * 条形码
+	 */
+	private String barCode;
 	/**
 	 * 标题
 	 */
@@ -161,11 +164,11 @@ public class Product implements Serializable {
 		this.status = status;
 	}
 
-	public boolean isDel() {
+	public boolean getIsDel() {
 		return isDel;
 	}
 
-	public void setDel(boolean isDel) {
+	public void setIsDel(boolean isDel) {
 		this.isDel = isDel;
 	}
 

@@ -3,7 +3,7 @@ package com.flash.dao.impl;
 import org.springframework.stereotype.Repository;
 
 import com.flash.dao.AuthDao;
-import com.flash.domain.User;
+import com.flash.ucenter.domain.User;
 @Repository("authDao")
 public class AuthDaoImpl extends CommonDaoImpl<User> implements AuthDao{
 

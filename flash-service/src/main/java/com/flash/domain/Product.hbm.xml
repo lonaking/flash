@@ -3,12 +3,14 @@
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="com.waimaizhuanjia.dc.product.domain.Product" table="dc_product" select-before-update="true" dynamic-update="true" lazy="false" >
+	<class name="com.flash.domain.Product" table="product" select-before-update="true" dynamic-update="true" lazy="false" >
 		<id name="id" column="product_id">
 			<generator class="native"></generator>
 		</id>
 		<!-- 菜名 -->
 		<property name="name" column="product_name" length="50"></property>
+		<!-- 条形码 -->
+		<property name="barCode" column="product_barcode" length="30"></property>
 		<!-- 菜标题 -->
 		<property name="title" column="product_title" length="50"></property>
 		<!-- 价格 -->
@@ -23,10 +25,21 @@
 		</property>
 		<!-- 图片 -->
 		<property name="pic" column="product_pic"></property>
-		<!-- 数量 -->
-		<property name="num" column="product_num" length="10"></property>
 		<!-- 单位 -->
 		<property name="unit" column="product_unit" length="2"></property>
+		<!-- 状态  0为下架 1 为上架  2为···· -->
+		<property name="status">
+			<column name="product_status" default="0" length="1"></column>
+		</property>
+		<!-- 是否删除 -->
+		<property name="isDel">
+			<column name="product_is_del" default="false"></column>
+		</property>
+		<!-- 商品分组 一对一-->
+		<one-to-one name="group" class="com.flash.domain.ProductGroup" cascade="none"></one-to-one>
+		<!-- 
+		<many-to-one name="group" class="com.flash.domain.ProductGroup" column="product_group_id" cascade="none" ></many-to-one>
+		 -->
 		<!-- 添加时间 -->
 		<property name="addTime" update="false">
 			<column name="product_add_time" sql-type="timestamp" default="2014-12-12 12:00:00"></column>
@@ -35,84 +48,6 @@
 		<property name="updateTime">
 			<column name="product_update_time" sql-type="timestamp" default="2014-12-12 12:00:00"></column>
 		</property>
-		<!-- 售出总数量 -->
-		<property name="soldCount">
-			<column name="product_sold_count" default="0"></column>
-		</property>
-		<!-- 今日售出数量 -->
-		<property name="soldToday">
-			<column name="product_sold_today" default="0"></column>
-		</property>
-		<!-- 本周售出数量 -->
-		<property name="soldWeek">
-			<column name="product_sold_week" default="0"></column>
-		</property>
-		<!-- 本月售出数量 -->
-		<property name="soldMonth">
-			<column name="product_sold_month" default="0"></column>
-		</property>
-		<!-- 上一次售出时间 -->
-		<property name="lastSoldTime">
-			<column name="product_last_sold_time" sql-type="timestamp" not-null="false"></column>
-		</property>
-		<!-- 状态  0为下架 1 为上架  2为···· -->
-		<property name="status">
-			<column name="product_status" default="0" length="1"></column>
-		</property>
-		<!-- 是否在回收站 -->
-		<property name="isDel">
-			<column name="product_is_del" default="false"></column>
-		</property>
-		<!-- 评分，最高为10 -->
-		<property name="stars">
-			<column name="product_stars" default="0" length="2"></column>
-		</property>
-		<!-- 是否允许预定 -->
-		<property name="allowBook">
-			<column name="product_allow_book" default="false"></column>
-		</property>
-		<!-- 是否允许复制 -->
-		<property name="allowCopy">
-			<column name="product_allow_copy" default="false"></column>
-		</property>
-		<!-- 推荐顺序 -->
-		<property name="recommend">
-			<column name="product_is_recommend" default="0" length="2"></column>
-		</property>
-		<!-- 评分 -->
-		<property name="comment">
-			<column name="product_comment" default="0.0" sql-type="double(2,1)"></column>
-		</property>
 		
-		<!-- 评论次数 -->
-		<property name="commentTimes">
-			<column name="product_comment_times" length="10" default="0"></column>
-		</property>
-		<!-- 所属店铺 -->
-		<many-to-one name="shop" class="com.waimaizhuanjia.dc.shop.domain.Shop" column="product_shop_id" cascade="none"></many-to-one>
-		<!-- 商品分组 -->
-		<many-to-one name="group" class="com.waimaizhuanjia.dc.product.domain.ProductGroup" column="product_group_id" cascade="none" ></many-to-one>
- 		<!-- 商品：订单 多对多 -->
-		<set name="orderItems" cascade="none" inverse="true"  lazy="true">
-			<key>
-				<column name="product_id"></column>
-			</key>
-			<one-to-many class="com.waimaizhuanjia.dc.order.domain.OrderItem"/>
-		</set>
-		
-		<!-- 商品：评论  一对多 -->
-		<set name="comments" cascade="delete" inverse="true"  lazy="true">
-			<key>
-				<column name="comment_product_id"></column>
-			</key>
-			<one-to-many class="com.waimaizhuanjia.dc.comment.domain.Comment"/>
-		</set>
-		<!--  商品：session  -->
-		<set name="sessionItems" cascade="none" inverse="true" lazy="true" >
-			<key>
-				<column name="product_id"></column>
-			</key>
-			<one-to-many class="com.waimaizhuanjia.dc.session.domain.SessionItem"/>
-		</set>
 	</class>
 </hibernate-mapping>

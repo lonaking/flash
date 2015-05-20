@@ -3,28 +3,28 @@
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="com.flash.domain.Role" table="dc_member_role" dynamic-update="true" select-before-update="true">
+	<class name="com.flash.ucenter.domain.Role" table="role" dynamic-update="true" select-before-update="true">
 		<id name="id" length="10" column="role_id">
 			<generator class="native"></generator>
 		</id>
 		<property name="pid" length="10" column="role_pid"></property>
-		<property name="name" length="20" column="role_name" unique="true"></property>
 		<property name="isParent">
 			<column name="role_isparent" default="false"></column>
 		</property>
+		<property name="name" length="20" column="role_name" unique="true"></property>
 		<!-- 角色：权限   一对多，一个角色对应多个权限 -->
-		<set name="privileges" table="dc_member_role_privileges" lazy="true" outer-join="true" order-by="id" cascade="none" inverse="false">
+		<set name="privileges" table="role_privilege_user" lazy="true" outer-join="true" order-by="id" cascade="none" inverse="false">
 			<key>
 				<column name="role_id"></column>
 			</key>
-			<many-to-many class="com.waimaizhuanjia.dc.privilege.domain.Privilege" column="privilege_id" ></many-to-many>
+			<many-to-many class="com.flash.ucenter.domain.Privilege" column="privilege_id" ></many-to-many>
 		</set>
-		<!-- 角色：用户  一对多  一个角色对应多个用户
+		<!-- 角色：用户  一对多  一个角色对应多个用户-->
 		<set name="users" cascade="none" inverse="false" lazy="true">
 			<key>
 				<column name="user_role_id"></column>
 			</key>
-			<one-to-many class="com.waimaizhuanjia.ucenter.domain.User" />
-		</set>-->
+			<one-to-many class="com.flash.ucenter.domain.User" />
+		</set>
 	</class>
 </hibernate-mapping>

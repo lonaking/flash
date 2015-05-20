@@ -1,63 +1,91 @@
 package com.flash.domain;
+
 /**
  * 商场的商品对象 包含一个商品／商品分组／
+ * 
  * @author lonaking
  */
 public class ShopProduct {
-	private int productId;
-	private int shopId;
-	private int GroupId;
-	private double shopPrice;//本商场的价格
+	private int id;
+	private Product product;
+	private Shop shop;
+	private double shopPrice;// 本商场的价格
+	private boolean onsale;
 	private int floor;// 楼层
 	private String storage;// 货架
 	private int storageX;// 货架横排
-	private String storageY;// 货架竖排
-	public int getProductId() {
-		return productId;
+	private char storageY;// 货架竖排
+
+	public int getId() {
+		return id;
 	}
-	public void setProductId(int productId) {
-		this.productId = productId;
+
+	public void setId(int id) {
+		this.id = id;
 	}
-	public int getShopId() {
-		return shopId;
+
+	public Product getProduct() {
+		return product;
 	}
-	public void setShopId(int shopId) {
-		this.shopId = shopId;
+
+	public void setProduct(Product product) {
+		this.product = product;
 	}
-	public int getGroupId() {
-		return GroupId;
+
+	public Shop getShop() {
+		return shop;
 	}
-	public void setGroupId(int groupId) {
-		GroupId = groupId;
+
+	public void setShop(Shop shop) {
+		this.shop = shop;
 	}
+
 	public double getShopPrice() {
 		return shopPrice;
 	}
+
 	public void setShopPrice(double shopPrice) {
 		this.shopPrice = shopPrice;
 	}
+
 	public int getFloor() {
 		return floor;
 	}
+
+	public boolean getIsOnsale() {
+		return onsale;
+	}
+
+	public void setIsOnsale(boolean onsale) {
+		this.onsale = onsale;
+	}
+
 	public void setFloor(int floor) {
 		this.floor = floor;
 	}
+
 	public String getStorage() {
 		return storage;
 	}
+
 	public void setStorage(String storage) {
 		this.storage = storage;
 	}
+
 	public int getStorageX() {
 		return storageX;
 	}
+
 	public void setStorageX(int storageX) {
 		this.storageX = storageX;
 	}
-	public String getStorageY() {
+
+	public char getStorageY() {
 		return storageY;
 	}
-	public void setStorageY(String storageY) {
+
+	public void setStorageY(char storageY) {
 		this.storageY = storageY;
 	}
+
 }

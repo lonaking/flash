@@ -3,7 +3,7 @@
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="com.flash.domain.Privilege" table="dc_member_privilege" dynamic-update="true">
+	<class name="com.flash.ucenter.domain.Privilege" table="privilege" dynamic-update="true">
 		<id name="id" length="10" column="privilege_id">
 			<generator class="native"></generator>
 		</id>
@@ -17,12 +17,12 @@
 			<column name="privilege_isparent" default="false" not-null="false"> </column>
 		</property>
 		<property name="type" length="2" column="privilege_type"></property>
-		<!-- 角色：权限   多对多，一个角色对应多个权限
-		<set name="roles"  table="dc_member_role_privileges" cascade="none" inverse="true" lazy="true">
+		<!-- 角色：权限   多对多，一个角色对应多个权限 -->
+		<set name="roles"  table="role_privilege_user" cascade="none" inverse="true" lazy="true">
 			<key>
 				<column name="privilege_id" ></column>
 			</key>
-			<many-to-many class="com.waimaizhuanjia.dc.privilege.domain.Role" column="role_id"></many-to-many>
-		</set> -->
+			<many-to-many class="com.flash.ucenter.domain.Role" column="role_id"></many-to-many>
+		</set>
 	</class>
 </hibernate-mapping>

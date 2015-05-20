@@ -16,10 +16,10 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.stereotype.Component;
 
 import com.flash.dao.AuthDao;
-import com.flash.domain.Privilege;
-import com.flash.domain.Role;
-import com.flash.domain.User;
 import com.flash.service.AuthService;
+import com.flash.ucenter.domain.Privilege;
+import com.flash.ucenter.domain.Role;
+import com.flash.ucenter.domain.User;
 @Component
 public class DefaultRealm extends AuthorizingRealm {
 

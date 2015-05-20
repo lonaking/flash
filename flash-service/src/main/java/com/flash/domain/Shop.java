@@ -69,11 +69,11 @@ public class Shop implements Serializable {
 	/**
 	 * 店铺拼音首字母
 	 */
-	private String shopPin;
+	private String pin;
 	/**
 	 * 店铺描述
 	 */
-	private String shopDescription;
+	private String description;
 	/**
 	 * 店铺公告
 	 */
@@ -195,11 +195,11 @@ public class Shop implements Serializable {
 		this.visitCounts = visitCounts;
 	}
 
-	public boolean isDel() {
+	public boolean getIsDel() {
 		return isDel;
 	}
 
-	public void setDel(boolean isDel) {
+	public void setIsDel(boolean isDel) {
 		this.isDel = isDel;
 	}
 
@@ -211,20 +211,20 @@ public class Shop implements Serializable {
 		this.recommend = recommend;
 	}
 
-	public String getShopPin() {
-		return shopPin;
+	public String getPin() {
+		return pin;
 	}
 
-	public void setShopPin(String shopPin) {
-		this.shopPin = shopPin;
+	public void setPin(String pin) {
+		this.pin = pin;
 	}
 
-	public String getShopDescription() {
-		return shopDescription;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setShopDescription(String shopDescription) {
-		this.shopDescription = shopDescription;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getNotice() {

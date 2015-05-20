@@ -3,7 +3,7 @@
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="com.flash.domain.User" table="dc_user" dynamic-update="true" select-before-update="true" lazy="true">
+	<class name="com.flash.ucenter.domain.User" table="user" dynamic-update="true" select-before-update="true" lazy="true">
 		<id name="id" column="user_id">
 			<generator class="native"></generator>
 		</id>
@@ -67,14 +67,6 @@
 		<property name="regTime" update="false">
 			<column name="user_regtime" sql-type="timestamp"></column>
 		</property>
-		<property name="lastLoginTime">
-			<column name="user_lastlogintime" sql-type="timestamp"/>
-		</property>
-		
-		<property name="lastLoginIp">
-			<column name="user_lastloginip" length="15" default="'0.0.0.0'"/>
-		</property>
-		
 		<property name="regIp" update="false">
 			<column name="user_regip" length="15" default="'0.0.0.0'" />
 		</property>
@@ -84,6 +76,6 @@
 		</property>
 		
 		<!-- 用户：角色 一对一 -->
-		<many-to-one name="role" class="com.flash.domain.Role" lazy="false" column="user_role_id" cascade="none" fetch="join"></many-to-one>
+		<many-to-one name="role" class="com.flash.ucenter.domain.Role" lazy="false" column="user_role_id" cascade="none" fetch="join"></many-to-one>
 	</class>
 </hibernate-mapping>

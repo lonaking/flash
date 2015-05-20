@@ -6,8 +6,8 @@
 		<artifactId>flash-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>flash-service</artifactId>
-	<name>flash-service</name>
+	<artifactId>flash-ucenter</artifactId>
+	<name>flash-ucenter</name>
 	
 	<dependencies>
 		<!-- flash dao -->
@@ -20,6 +20,13 @@
 		<dependency>
 			<groupId>com.flash</groupId>
 			<artifactId>flash-redis</artifactId>
+			<version>${flash.version}</version>
+		</dependency>
+		
+		<!-- flash commons -->
+		<dependency>
+			<groupId>com.flash</groupId>
+			<artifactId>flash-commons</artifactId>
 			<version>${flash.version}</version>
 		</dependency>
 	</dependencies>

@@ -5,8 +5,8 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.flash.dao.AuthDao;
-import com.flash.domain.User;
 import com.flash.service.redis.RedisService;
+import com.flash.ucenter.domain.User;
 @Service("authService")
 public class AuthService {
 	

@@ -14,7 +14,6 @@
 	</properties>
 
 	<dependencies>
-
 		<!-- flash dao -->
 		<dependency>
 			<groupId>com.flash</groupId>
@@ -25,6 +24,13 @@
 		<dependency>
 			<groupId>com.flash</groupId>
 			<artifactId>flash-redis</artifactId>
+			<version>${flash.version}</version>
+		</dependency>
+		
+		<!-- flash ucenter -->
+		<dependency>
+			<groupId>com.flash</groupId>
+			<artifactId>flash-ucenter</artifactId>
 			<version>${flash.version}</version>
 		</dependency>
 	</dependencies>

@@ -70,7 +70,7 @@ public class RedisService {
 	 * @return
 	 */
 	public String setObj(String key, Object value){
-		if(value.getClass().getTypeName().equals("String")){
+		if(value.getClass().getSimpleName().equals("String")){
 			return set(key, (String) value);
 		}
 		String json = JsonHelper.transObjToJsonString(value);

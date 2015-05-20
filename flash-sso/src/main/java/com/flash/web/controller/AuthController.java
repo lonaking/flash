@@ -4,7 +4,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.beanutils.BeanUtilsBean2;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -14,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.flash.commons.cookie.CookieUtils;
-import com.flash.domain.User;
 import com.flash.result.BaseResponse;
 import com.flash.service.AuthService;
+import com.flash.ucenter.domain.User;
 
 @Controller
 @RequestMapping("/auth")
@@ -27,6 +26,17 @@ public class AuthController {
 
 	@Resource(name = "authService")
 	private AuthService authService;
+	
+	@RequestMapping("/ping")
+	public @ResponseBody BaseResponse<?> ping(){
+		System.out.println(123);
+		User findUser = this.authService.findUser("admin");
+		BaseResponse<User> response = new BaseResponse<User>();
+		response.setMsg("ping");
+		response.setCode("200");
+		response.setData(findUser);
+		return response;
+	}
 	/**
 	 * 登陆
 	 * 

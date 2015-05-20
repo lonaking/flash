@@ -1,6 +1,6 @@
 package com.flash.dao;
 
-import com.flash.domain.User;
+import com.flash.ucenter.domain.User;
 
 public interface AuthDao extends CommonDao<User>{
 

@@ -1,4 +1,4 @@
-package com.flash.domain;
+package com.flash.ucenter.domain;
 
 import java.io.Serializable;
 import java.util.HashSet;

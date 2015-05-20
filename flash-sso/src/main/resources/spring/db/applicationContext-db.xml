@@ -13,10 +13,10 @@
        					   http://www.springframework.org/schema/aop 
        					   http://www.springframework.org/schema/aop/spring-aop.xsd">
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
-		<property name="driverClass" value="${jdbc.driverClass}"></property>
- 		<property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
- 		<property name="user" value="${jdbc.user}"></property>
- 		<property name="password" value="${jdbc.password}"></property>
- 		<property name="maxIdleTime" value="${jdbc.maxIdleTime}"></property>
+		<property name="driverClass" value="${db.driverClass}"></property>
+ 		<property name="jdbcUrl" value="${db.jdbcUrl}"></property>
+ 		<property name="user" value="${db.user}"></property>
+ 		<property name="password" value="${db.password}"></property>
+ 		<property name="maxIdleTime" value="${db.maxIdleTime}"></property>
 	</bean>
 </beans>

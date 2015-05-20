@@ -15,7 +15,7 @@
 	<!-- 构建连接池配置信息 -->
 	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
 		<!-- 集群的最大连接数 -->
-		<property name="maxTotal" value="${redis.maxTotal}"></property>
+		<property name="maxTotal" value="${redis.pool.maxTotal}"></property>
 	</bean>
 	<!-- 配置集群的连接池 -->
 	<bean id="shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool" destroy-method="close">
