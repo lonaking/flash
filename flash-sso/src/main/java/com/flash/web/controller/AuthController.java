@@ -28,9 +28,8 @@ public class AuthController {
 	private AuthService authService;
 	
 	@RequestMapping("/ping")
-	public @ResponseBody BaseResponse<?> ping(){
-		System.out.println(123);
-		User findUser = this.authService.findUser("admin");
+	public @ResponseBody BaseResponse<?> ping(String name){
+		User findUser = this.authService.findUser(name);
 		BaseResponse<User> response = new BaseResponse<User>();
 		response.setMsg("ping");
 		response.setCode("200");

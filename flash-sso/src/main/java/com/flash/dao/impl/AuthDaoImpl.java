@@ -9,7 +9,10 @@ public class AuthDaoImpl extends CommonDaoImpl<User> implements AuthDao{
 
 	@Override
 	public User findUserByLoginName(String username) {
-		return this.findEntryByString("loginName", username);
+		User exampleEntity = new User();
+		exampleEntity.setLoginName(username);
+		User user = this.findEntryByString("loginName", username);
+		return user;
 	}
 	
 	

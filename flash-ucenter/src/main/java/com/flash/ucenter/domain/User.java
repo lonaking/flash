@@ -11,7 +11,7 @@ import java.sql.Timestamp;
  * 用户信息
  * 
  * @author Leon
- * @since v1.0 Oct 20, 2014 7:52:42 PM
+ * @since v1.0 Osct 20, 2014 7:52:42 PM
  */
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -225,11 +225,11 @@ public class User implements Serializable {
 		this.regIp = regIp;
 	}
 
-	public boolean isDel() {
+	public boolean getIsDel() {
 		return isDel;
 	}
 
-	public void setDel(boolean isDel) {
+	public void setIsDel(boolean isDel) {
 		this.isDel = isDel;
 	}
 

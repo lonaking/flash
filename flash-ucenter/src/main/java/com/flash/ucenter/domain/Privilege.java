@@ -96,10 +96,6 @@ public class Privilege implements Serializable {
 		this.isParent = isParent;
 	}
 
-	public void setParent(boolean isParent) {
-		this.isParent = isParent;
-	}
-
 	public Integer getType() {
 		return type;
 	}
@@ -108,11 +104,11 @@ public class Privilege implements Serializable {
 		this.type = type;
 	}
 
-	public boolean getChecked() {
+	public boolean getIsChecked() {
 		return checked;
 	}
 
-	public void setChecked(boolean checked) {
+	public void setIsChecked(boolean checked) {
 		this.checked = checked;
 	}
 
