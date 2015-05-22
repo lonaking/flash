@@ -1,4 +1,4 @@
-package com.flash.utils;
+package com.flash.base.utils;
 
 public class PageUtils {
 	/**

@@ -1,9 +1,9 @@
-package com.flash.tool.page;
+package com.flash.base.tool.page;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.flash.utils.PageUtils;
+import com.flash.base.utils.PageUtils;
 /**
  * 分页信息
  * @author Administrator

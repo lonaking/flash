@@ -1,4 +1,4 @@
-package com.flash.dao.impl;
+package com.flash.base.dao.impl;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
@@ -19,10 +19,10 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.flash.dao.CommonDao;
-import com.flash.tool.page.Page;
-import com.flash.tool.query.BaseQuery;
-import com.flash.utils.DateUtils;
+import com.flash.base.dao.CommonDao;
+import com.flash.base.tool.page.Page;
+import com.flash.base.tool.query.BaseQuery;
+import com.flash.base.utils.DateUtils;
 
 public class CommonDaoImpl<T> implements CommonDao<T> {
 	private Class cla;

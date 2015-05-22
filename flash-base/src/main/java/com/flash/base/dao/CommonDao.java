@@ -1,9 +1,9 @@
-package com.flash.dao;
+package com.flash.base.dao;
 import java.io.Serializable;
 import java.util.List;
 
-import com.flash.tool.page.Page;
-import com.flash.tool.query.BaseQuery;
+import com.flash.base.tool.page.Page;
+import com.flash.base.tool.query.BaseQuery;
 /**
  * 公共Dao
  * @author Administrator

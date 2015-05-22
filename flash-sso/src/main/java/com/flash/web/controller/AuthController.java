@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,8 +28,8 @@ public class AuthController {
 	@Resource(name = "authService")
 	private AuthService authService;
 	
-	@RequestMapping("/ping")
-	public @ResponseBody BaseResponse<?> ping(String name){
+	@RequestMapping(value="/ping/{name}",method = RequestMethod.GET)
+	public @ResponseBody BaseResponse<?> ping(@PathVariable String name){
 		User findUser = this.authService.findUser(name);
 		BaseResponse<User> response = new BaseResponse<User>();
 		response.setMsg("ping");

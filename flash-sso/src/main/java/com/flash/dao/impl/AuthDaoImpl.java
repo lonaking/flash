@@ -2,6 +2,7 @@ package com.flash.dao.impl;
 
 import org.springframework.stereotype.Repository;
 
+import com.flash.base.dao.impl.CommonDaoImpl;
 import com.flash.dao.AuthDao;
 import com.flash.ucenter.domain.User;
 @Repository("authDao")

@@ -1,4 +1,4 @@
-package com.flash.tool.query;
+package com.flash.base.tool.query;
 
 import java.util.HashMap;
 import java.util.Map;
