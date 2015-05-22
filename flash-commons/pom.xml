@@ -25,11 +25,6 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>${apache-commons-lang3.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>${apache-commons-lang.version}</version>
-		</dependency>
 		
 		<!-- apache commons io -->
 		<dependency>

@@ -1,6 +1,5 @@
 package com.flash.ucenter.exception;
 
-import com.waimaizhuanjia.exception.ucenter.LoginException;
 
 /**
  * 输入为空异常
