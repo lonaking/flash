@@ -19,7 +19,7 @@ public class AuthService {
 	public User login(User user){
 		User userExists = null;
 		try{
-			userExists = this.redisService.hget("users", user.getLoginName(), User.class);
+			userExists = this.redisService.hgetObj("users", user.getLoginName(), User.class);
 		}catch(Exception e){
 			userExists = this.authDao.findUserByLoginName(user.getLoginName());
 		}
@@ -35,7 +35,9 @@ public class AuthService {
 
 
 	public User findUser(String username) {
-		return this.authDao.findUserByLoginName(username);
+		//return this.authDao.findUserByLoginName(username);
+		User user = this.authDao.findEntryById(12);
+		return user;
 	}
 	
 }

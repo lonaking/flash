@@ -27,7 +27,13 @@ import com.flash.base.utils.DateUtils;
 public class CommonDaoImpl<T> implements CommonDao<T> {
 	private Class cla;
 	private ClassMetadata classMetadata;
-
+	public Class getCla() {
+		return cla;
+	}
+	public ClassMetadata getClassMetadata() {
+		return classMetadata;
+	}
+	
 	public CommonDaoImpl() {
 		ParameterizedType type = (ParameterizedType) this.getClass()
 				.getGenericSuperclass();
