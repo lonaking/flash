@@ -73,14 +73,14 @@ public class CommonDaoImpl<T> implements CommonDao<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public void deleteEntryById(Serializable id) {
+	public void deleteEntityById(Serializable id) {
 		T t = (T) this.hibernateTemplate.get(this.cla, id);
 		this.hibernateTemplate.delete(t);
 	}
 
 	@Override
 	@Transactional
-	public void deleteEntryByIds(Serializable[] ids) {
+	public void deleteEntityByIds(Serializable[] ids) {
 		StringBuffer hql = new StringBuffer("from " + this.cla.getName());
 		String tempIds = Arrays.toString(ids).substring(1,
 				Arrays.toString(ids).length() - 1);
@@ -94,18 +94,25 @@ public class CommonDaoImpl<T> implements CommonDao<T> {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public T findEntryById(Serializable id) {
+	public T findEntityById(Serializable id) {
 		return (T) this.hibernateTemplate.get(this.cla, id);
 	}
 
-	public T findEntryByString(final String string, final String value) {
-		// List<T> list =
-		// this.hibernateTemplate.find("from "+this.cla.getName()+" where ?=?",string,value);
+	@Override
+	public List<T> findEntitiesByString(String string, Object value) {
 		List<T> list = this.hibernateTemplate.find("from " + this.cla.getName()
 				+ " where " + string + "=?", value);
 		if (null == list || list.size() == 0) {
 			return null;
 		}
+		return list;
+	}
+	
+	@Override
+	public T findEntityByString(final String string, final Object value) {
+		// List<T> list =
+		// this.hibernateTemplate.find("from "+this.cla.getName()+" where ?=?",string,value);
+		List<T> list = findEntitiesByString(string, value);
 		return list.get(0);
 	}
 
@@ -261,7 +268,7 @@ public class CommonDaoImpl<T> implements CommonDao<T> {
 	}
 
 	@Override
-	public List<T> findEntryByIds(Serializable[] ids) {
+	public List<T> findEntityByIds(Serializable[] ids) {
 		if (ids.length > 0) {
 			StringBuffer hql = new StringBuffer();
 			hql.append("from " + this.cla.getName());

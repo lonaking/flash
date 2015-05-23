@@ -10,93 +10,29 @@ import java.io.Serializable;
  */
 public class Shop implements Serializable {
 	private static final long serialVersionUID = 1L;
-	/**
-	 * 店铺id
-	 */
 	private Integer id;
-	/**
-	 * 店铺名
-	 */
 	private String name;
-	/**
-	 * 店铺简介
-	 */
 	private String intro;
-	/**
-	 * 联系人姓名，并非用户姓名
-	 */
 	private String linkManName;
-	/**
-	 * 联系人手机
-	 */
 	private String linkMobile;
-	/**
-	 * 店铺电话
-	 */
 	private String tel;
-	/**
-	 * 店铺邮件
-	 */
 	private String email;
-	/**
-	 * 店铺地址
-	 */
-	private String addr;
-	/**
-	 * 店铺状态
-	 */
+	private String address;
+	private int cityId;
+	private String openTime;
+	private String closeTime;
 	private int status;
-	/**
-	 * 店铺图标
-	 */
 	private String headPic;
-	/**
-	 * 店铺模式
-	 */
 	private int pattern;
-	/**
-	 * 店铺点击量
-	 */
-	private int visitCounts;
-	/**
-	 * 是否删除，是否在回收站
-	 */
 	private boolean isDel;
-	/**
-	 * 是否推荐 1推荐 0默认
-	 */
 	private int recommend;
-	/**
-	 * 店铺拼音首字母
-	 */
 	private String pin;
-	/**
-	 * 店铺描述
-	 */
 	private String description;
-	/**
-	 * 店铺公告
-	 */
 	private String notice;
-	/**
-	 * 店铺类别
-	 */
 	private int type;
-	/**
-	 * 店铺所在地经纬度 经度longitude
-	 */
 	private double lng;
-	/**
-	 * 店铺所在地经纬度 纬度latitude
-	 */
 	private double lat;
-	/**
-	 * 店铺添加时间
-	 */
 	private long createTime;
-	/**
-	 * 更新时间
-	 */
 	private long updateTime;
 
 	public Integer getId() {
@@ -155,12 +91,12 @@ public class Shop implements Serializable {
 		this.email = email;
 	}
 
-	public String getAddr() {
-		return addr;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setAddr(String addr) {
-		this.addr = addr;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public int getStatus() {
@@ -185,14 +121,6 @@ public class Shop implements Serializable {
 
 	public void setPattern(int pattern) {
 		this.pattern = pattern;
-	}
-
-	public int getVisitCounts() {
-		return visitCounts;
-	}
-
-	public void setVisitCounts(int visitCounts) {
-		this.visitCounts = visitCounts;
 	}
 
 	public boolean getIsDel() {
@@ -273,5 +201,21 @@ public class Shop implements Serializable {
 
 	public void setUpdateTime(long updateTime) {
 		this.updateTime = updateTime;
+	}
+
+	public String getOpenTime() {
+		return openTime;
+	}
+
+	public void setOpenTime(String openTime) {
+		this.openTime = openTime;
+	}
+
+	public String getCloseTime() {
+		return closeTime;
+	}
+
+	public void setCloseTime(String closeTime) {
+		this.closeTime = closeTime;
 	}
 }

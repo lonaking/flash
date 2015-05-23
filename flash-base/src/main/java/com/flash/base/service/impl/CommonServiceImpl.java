@@ -51,18 +51,18 @@ public abstract class CommonServiceImpl<T> implements CommonService<T> {
 
 	@Override
 	public T getEntryById(Serializable id) {
-		return (T) this.getCommonDao().findEntryById(id);
+		return (T) this.getCommonDao().findEntityById(id);
 	}
 
 	@Override
 	@Transactional
 	public void deleteEntryById(Serializable id) {
-		this.getCommonDao().deleteEntryById(id);
+		this.getCommonDao().deleteEntityById(id);
 	}
 
 	@Override
 	@Transactional
 	public void deleteEntriesByIds(Serializable[] ids) {
-		this.getCommonDao().deleteEntryByIds(ids);
+		this.getCommonDao().deleteEntityByIds(ids);
 	}
 }

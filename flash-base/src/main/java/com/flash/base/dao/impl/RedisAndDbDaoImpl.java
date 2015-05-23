@@ -78,10 +78,10 @@ public class RedisAndDbDaoImpl<T> extends CommonDaoImpl<T>{
 	}
 
 	@Override
-	public void deleteEntryById(Serializable id) {
+	public void deleteEntityById(Serializable id) {
 		String key = super.getCla().getName();
 		try{
-			super.deleteEntryById(id);
+			super.deleteEntityById(id);
 			logger.info("success to delete data from db,key is {},identify is {}",key,id);
 		}catch(Exception e){
 			logger.info("failed to delete data from db,key is {},identify is {}",key,id);
@@ -99,7 +99,7 @@ public class RedisAndDbDaoImpl<T> extends CommonDaoImpl<T>{
 	}
 
 	@Override
-	public void deleteEntryByIds(Serializable[] ids) {
+	public void deleteEntityByIds(Serializable[] ids) {
 		if(null == ids || ids.length == 0){
 			return ;
 		}
@@ -111,7 +111,7 @@ public class RedisAndDbDaoImpl<T> extends CommonDaoImpl<T>{
 			keys[i] = serializable;
 		}
 		try{
-			super.deleteEntryByIds(ids);
+			super.deleteEntityByIds(ids);
 			logger.info("success to delete data from db,key is {},identify is {}",key,ids.toString());
 		}catch(Exception e){
 			logger.info("failed to delete data from db,key is {},identify is {}",key,ids.toString());
@@ -129,7 +129,7 @@ public class RedisAndDbDaoImpl<T> extends CommonDaoImpl<T>{
 	}
 
 	@Override
-	public T findEntryById(Serializable id) {
+	public T findEntityById(Serializable id) {
 		String key = super.getCla().getName();
 		try{
 			T t = (T) this.redisService.hgetObj(key, id.toString(), super.getCla());
@@ -137,15 +137,15 @@ public class RedisAndDbDaoImpl<T> extends CommonDaoImpl<T>{
 			return t ;
 		}catch(Exception e){
 			logger.info("failed to find {} from redis, id is {}" ,key, id);
-			T t = super.findEntryById(id);
+			T t = super.findEntityById(id);
 			logger.info("success to find {} from db, id is {}" ,key, id);
 			return t;
 		}
 	}
 
 	@Override
-	public T findEntryByString(String string, String value) {
-		return super.findEntryByString(string, value);
+	public T findEntityByString(String string, Object value) {
+		return super.findEntityByString(string, value);
 	}
 
 	@Override
@@ -177,9 +177,9 @@ public class RedisAndDbDaoImpl<T> extends CommonDaoImpl<T>{
 	}
 
 	@Override
-	public List<T> findEntryByIds(Serializable[] ids) {
+	public List<T> findEntityByIds(Serializable[] ids) {
 		// TODO Auto-generated method stub
-		return super.findEntryByIds(ids);
+		return super.findEntityByIds(ids);
 	}
 
 	@Override

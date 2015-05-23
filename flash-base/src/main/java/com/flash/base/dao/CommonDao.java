@@ -15,11 +15,15 @@ public interface CommonDao<T> {
 	
 	public void saveOrUpdateEntity(T t);
 	
-	public void deleteEntryById(Serializable id);
+	public void deleteEntityById(Serializable id);
 	
-	public void deleteEntryByIds(Serializable[] ids);
+	public List<T> findEntitiesByString(final String string, final Object value);
 	
-	public T findEntryById(Serializable id);
+	public T findEntityByString(final String string, final Object value);
+	
+	public void deleteEntityByIds(Serializable[] ids);
+	
+	public T findEntityById(Serializable id);
 	
 	public Page<T> findPage(final BaseQuery baseQuery);
 	
@@ -27,6 +31,6 @@ public interface CommonDao<T> {
 
 	public List<T> findAll();
 	
-	public List<T> findEntryByIds(Serializable[] ids);
+	public List<T> findEntityByIds(Serializable[] ids);
 	
 }

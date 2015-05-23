@@ -29,10 +29,12 @@
 			<version>${spring-framework.version}</version>
 		</dependency>
 		
+		<!-- redis -->
 		<dependency>
 			<groupId>com.flash</groupId>
 			<artifactId>flash-redis</artifactId>
 			<version>${flash.version}</version>
 		</dependency>
+		
 	</dependencies>
 </project>

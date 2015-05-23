@@ -16,7 +16,7 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.stereotype.Component;
 
 import com.flash.dao.AuthDao;
-import com.flash.service.AuthService;
+import com.flash.service.impl.AuthServiceImpl;
 import com.flash.ucenter.domain.Privilege;
 import com.flash.ucenter.domain.Role;
 import com.flash.ucenter.domain.User;
@@ -27,7 +27,7 @@ public class DefaultRealm extends AuthorizingRealm {
 	private AuthDao authDao;
 	
 	@Resource(name="authService")
-	private AuthService authService;
+	private AuthServiceImpl authService;
 
 	/**
 	 * 获取身份相关信息
@@ -36,7 +36,7 @@ public class DefaultRealm extends AuthorizingRealm {
 	protected AuthorizationInfo doGetAuthorizationInfo(
 			PrincipalCollection principals) {
 		Integer userId = (Integer) principals.fromRealm(getName()).iterator().next();
-		User user = this.authDao.findEntryById(userId);
+		User user = this.authDao.findEntityById(userId);
 		if(user != null){
 			SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 			Role role = user.getRole();

@@ -1,7 +1,5 @@
 package com.flash.ucenter.dao.shiro;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -16,6 +14,7 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.flash.ucenter.dao.UserDao;
 import com.flash.ucenter.domain.Privilege;
@@ -23,6 +22,7 @@ import com.flash.ucenter.domain.Role;
 import com.flash.ucenter.domain.User;
 import com.flash.ucenter.service.UserService;
 @Component
+@Repository("defaultRealm")
 public class SampleRealm extends AuthorizingRealm {
 
 	@Resource(name = "userDao")

@@ -11,6 +11,13 @@
 	<name>flash-web</name>
 	
 	<dependencies>
+		<!-- flash-base-controller -->
+		<dependency>
+			<groupId>com.flash</groupId>
+			<artifactId>flash-base-controller</artifactId>
+			<version>${flash.version}</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>com.flash</groupId>
 			<artifactId>flash-service</artifactId>

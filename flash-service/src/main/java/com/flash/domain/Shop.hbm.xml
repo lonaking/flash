@@ -13,7 +13,9 @@
 		<property name="linkMobile" column="shop_linkmobile" length="11"></property>
 		<property name="tel" column="shop_tel" length="11"></property>
 		<property name="email" column="shop_email" length="30"></property>
-		<property name="addr" column="shop_addr" length="30"></property>
+		<property name="address" column="shop_address" length="30"></property>
+		<property name="openTime" column="shop_open_time" length="5"></property>
+		<property name="closeTime" column="shop_close_time" length="5"></property>
 		<!-- 店铺状态 0 关闭 1 打开 2 其他 -->
 		<property name="status">
 			<column name="shop_status" length="1" default="1"></column>
@@ -23,10 +25,6 @@
 		<!-- 店铺模式 -->
 		<property name="pattern">
 			<column name="shop_pattern" length="1" default="0"></column>
-		</property>
-		<!-- 访问量 -->
-		<property name="visitCounts">
-			<column name="shop_visitcounts" default="0"></column>
 		</property>
 		<!-- 是否删除 -->
 		<property name="isDel">

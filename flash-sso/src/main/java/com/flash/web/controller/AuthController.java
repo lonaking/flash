@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.flash.base.web.response.BaseResponse;
 import com.flash.commons.cookie.CookieUtils;
-import com.flash.result.BaseResponse;
-import com.flash.service.AuthService;
+import com.flash.service.impl.AuthServiceImpl;
 import com.flash.ucenter.domain.User;
 
 @Controller
@@ -26,7 +26,7 @@ public class AuthController {
 			.getLogger(AuthController.class);
 
 	@Resource(name = "authService")
-	private AuthService authService;
+	private AuthServiceImpl authService;
 	
 	@RequestMapping(value="/ping/{name}",method = RequestMethod.GET)
 	public @ResponseBody BaseResponse<?> ping(@PathVariable String name){
@@ -48,6 +48,8 @@ public class AuthController {
 			HttpServletResponse response, AuthCommond authCommond) {
 		User user = new User();
 		BeanUtils.copyProperties(user, authCommond);
+		this.authService.checkLogin(user);
+		
 		this.authService.login(user);
 		CookieUtils.setCookie(request, response, "_user", user.getId()+"", 3600*24*100, "/");
 		return null;

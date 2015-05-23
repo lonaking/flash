@@ -16,6 +16,13 @@
 			<artifactId>flash-base</artifactId>
 			<version>${flash.version}</version>
 		</dependency>
+		
+		<!-- flash dao -->
+		<dependency>
+			<groupId>com.flash</groupId>
+			<artifactId>flash-base-controller</artifactId>
+			<version>${flash.version}</version>
+		</dependency>
 		<!-- flash redis -->
 		<dependency>
 			<groupId>com.flash</groupId>

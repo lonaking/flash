@@ -13,7 +13,7 @@ public class AuthDaoImpl extends RedisAndDbDaoImpl<User> implements AuthDao{
 	public User findUserByLoginName(String username) {
 		User exampleEntity = new User();
 		exampleEntity.setLoginName(username);
-		User user = this.findEntryByString("loginName", username);
+		User user = this.findEntityByString("loginName", username);
 		return user;
 	}
 	
