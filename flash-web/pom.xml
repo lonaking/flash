@@ -23,5 +23,11 @@
 			<artifactId>flash-service</artifactId>
 			<version>${flash.version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.flash</groupId>
+			<artifactId>flash-ucenter</artifactId>
+			<version>${flash.version}</version>
+		</dependency>
 	</dependencies>
 </project>

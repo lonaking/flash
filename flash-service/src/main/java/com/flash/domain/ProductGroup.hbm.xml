@@ -8,11 +8,9 @@
 			<generator class="native"></generator>
 		</id>
 		<!-- 分组名 -->
-		<property name="name" column="group_name" length="10"></property>
+		<property name="name" column="group_name" length="30"></property>
 		<!-- 上级id -->
-		<property name="parentId" column="parent_id"></property>
-		<!-- 所属店铺 -->
-		<many-to-one name="shop" class="com.flash.domain.Shop" column="group_shop_id" fetch="join"></many-to-one>
+		<property name="parentId" column="parent_id" length="11"></property>
 		<!-- 商品 -->
 		<set name="products" order-by="id" cascade="none" inverse="true" lazy="true">
 			<key>

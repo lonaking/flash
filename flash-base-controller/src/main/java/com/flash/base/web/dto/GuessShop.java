@@ -12,6 +12,7 @@ public class GuessShop {
 	private int id;
 	private String name;
 	private String address;
+	private int distance;
 	@JsonProperty("open_time")
 	private String openTime;
 	@JsonProperty("close_time")
@@ -42,10 +43,11 @@ public class GuessShop {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
+
 	public String getOpenTime() {
 		return openTime;
 	}
+
 	public void setOpenTime(String openTime) {
 		this.openTime = openTime;
 	}
@@ -73,6 +75,13 @@ public class GuessShop {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	
+
+	public int getDistance() {
+		return distance;
+	}
+
+	public void setDistance(int distance) {
+		this.distance = distance;
+	}
 
 }

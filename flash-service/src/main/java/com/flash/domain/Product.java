@@ -4,7 +4,6 @@
 package com.flash.domain;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 /**
  * 商品信息
@@ -14,61 +13,21 @@ import java.sql.Timestamp;
  */
 public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
-	/**
-	 * 商品id
-	 */
 	private int id;
-	/**
-	 * 商品名
-	 */
 	private String name;
-	/**
-	 * 条形码
-	 */
-	private String barCode;
-	/**
-	 * 标题
-	 */
+	private String barcode;// 条码
 	private String title;
-	/**
-	 * 定价
-	 */
 	private double price;
-	/**
-	 * 简介
-	 */
 	private String intro;
-	/**
-	 * 详情
-	 */
 	private String description;
-	/**
-	 * 图片
-	 */
 	private String pic;
-	/**
-	 * 单位
-	 */
 	private String unit;
-	/**
-	 * 0下架 1 上架
-	 */
-	private int status;
-	/**
-	 * 是否删除到回收站
-	 */
+	private int status;// 0下架 1 上架
 	private boolean isDel;
 	/* 所属分组， 商品：分组 多对一 */
 	private ProductGroup group;
-
-	/**
-	 * 添加时间
-	 */
-	private Timestamp addTime;
-	/**
-	 * 更新时间
-	 */
-	private Timestamp updateTime;
+	private long addTime;
+	private long updateTime;
 
 	@Override
 	public int hashCode() {
@@ -180,27 +139,28 @@ public class Product implements Serializable {
 		this.group = group;
 	}
 
-	public Timestamp getAddTime() {
+	public String getBarcode() {
+		return barcode;
+	}
+
+	public void setBarcode(String barcode) {
+		this.barcode = barcode;
+	}
+
+	public long getAddTime() {
 		return addTime;
 	}
 
-	public void setAddTime(Timestamp addTime) {
+	public void setAddTime(long addTime) {
 		this.addTime = addTime;
 	}
 
-	public Timestamp getUpdateTime() {
+	public long getUpdateTime() {
 		return updateTime;
 	}
 
-	public void setUpdateTime(Timestamp updateTime) {
+	public void setUpdateTime(long updateTime) {
 		this.updateTime = updateTime;
 	}
 
-	public String getBarCode() {
-		return barCode;
-	}
-
-	public void setBarCode(String barCode) {
-		this.barCode = barCode;
-	}
 }

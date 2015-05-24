@@ -218,4 +218,13 @@ public class Shop implements Serializable {
 	public void setCloseTime(String closeTime) {
 		this.closeTime = closeTime;
 	}
+
+	public int getCityId() {
+		return cityId;
+	}
+
+	public void setCityId(int cityId) {
+		this.cityId = cityId;
+	}
+
 }

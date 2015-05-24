@@ -7,10 +7,10 @@
 		<id name="id" column="product_id">
 			<generator class="native"></generator>
 		</id>
-		<!-- 菜名 -->
+		<!-- 商品名 -->
 		<property name="name" column="product_name" length="50"></property>
 		<!-- 条形码 -->
-		<property name="barCode" column="product_barcode" length="30"></property>
+		<property name="barcode" column="product_barcode" length="30"></property>
 		<!-- 菜标题 -->
 		<property name="title" column="product_title" length="50"></property>
 		<!-- 价格 -->
@@ -36,18 +36,11 @@
 			<column name="product_is_del" default="false"></column>
 		</property>
 		<!-- 商品分组 一对一-->
-		<one-to-one name="group" class="com.flash.domain.ProductGroup" cascade="none"></one-to-one>
-		<!-- 
-		<many-to-one name="group" class="com.flash.domain.ProductGroup" column="product_group_id" cascade="none" ></many-to-one>
-		 -->
+		<many-to-one name="group" class="com.flash.domain.ProductGroup" column="product_group_id" cascade="none"></many-to-one>
 		<!-- 添加时间 -->
-		<property name="addTime" update="false">
-			<column name="product_add_time" sql-type="timestamp" default="2014-12-12 12:00:00"></column>
-		</property>
+		<property name="addTime" update="false" column="product_add_time" length="13"></property>
 		<!-- 最后更新事件  -->
-		<property name="updateTime">
-			<column name="product_update_time" sql-type="timestamp" default="2014-12-12 12:00:00"></column>
-		</property>
+		<property name="updateTime" column="product_update_time" length="13"></property>
 		
 	</class>
 </hibernate-mapping>

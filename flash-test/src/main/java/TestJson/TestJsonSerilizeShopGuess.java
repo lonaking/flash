@@ -17,5 +17,7 @@ public class TestJsonSerilizeShopGuess {
 		GuessShop guessShop = JsonHelper.transJsonStringToObj(json, GuessShop.class);
 		System.out.println(guessShop);
 		
+		System.out.println(System.currentTimeMillis());
+		
 	}
 }

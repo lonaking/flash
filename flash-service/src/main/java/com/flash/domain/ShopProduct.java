@@ -7,15 +7,15 @@ package com.flash.domain;
  */
 public class ShopProduct {
 	private int id;
-	private Product product;
-	private Shop shop;
 	private double shopPrice;// 本商场的价格
 	private boolean onsale;
 	private int floor;// 楼层
 	private String storage;// 货架
 	private int storageX;// 货架横排
 	private char storageY;// 货架竖排
-
+	
+	private Product product;
+	private Shop shop;
 	public int getId() {
 		return id;
 	}
@@ -52,11 +52,11 @@ public class ShopProduct {
 		return floor;
 	}
 
-	public boolean getIsOnsale() {
+	public boolean getOnsale() {
 		return onsale;
 	}
 
-	public void setIsOnsale(boolean onsale) {
+	public void setOnsale(boolean onsale) {
 		this.onsale = onsale;
 	}
 

@@ -3,10 +3,23 @@
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="com.flash.domain.ShopProduct" table="shop" lazy="true" select-before-update="true" dynamic-update="true">
-		<id name="id" column="id">
+	<class name="com.flash.domain.ShopProduct" table="shop_product" lazy="true" select-before-update="true" dynamic-update="true">
+		<id name="id" column="product_id">
 			<generator class="native"></generator>
 		</id>
+		<property name="shopPrice">
+			<column name="product_shop_price" sql-type="double(8,2)" default="0.0"></column>
+		</property>
+		<property name="onsale">
+			<column name="product_on_sale" default="false"></column>
+		</property>
 		
+		<property name="floor" column="product_floor" length="3"></property>
+		<property name="storage" column="product_storage" length="4"></property>
+		<property name="storageX" column="product_storage_x" length="2"></property>
+		<property name="storageY" column="product_storage_y" length="4"></property>
+		
+		<many-to-one name="product" class="com.flash.domain.Product" column="product_bid" lazy="false" cascade="none"></many-to-one>
+		<many-to-one name="shop" class="com.flash.domain.Shop" column="product_shop_id" cascade="none"></many-to-one>
 	</class>
 </hibernate-mapping>
