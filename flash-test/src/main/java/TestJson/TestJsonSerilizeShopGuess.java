@@ -19,5 +19,8 @@ public class TestJsonSerilizeShopGuess {
 		
 		System.out.println(System.currentTimeMillis());
 		
+		int i = 1;
+		double b = 1.0;
+		System.out.println(i == b);
 	}
 }

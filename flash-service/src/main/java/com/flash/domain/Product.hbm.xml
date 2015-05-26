@@ -27,6 +27,11 @@
 		<property name="pic" column="product_pic"></property>
 		<!-- 单位 -->
 		<property name="unit" column="product_unit" length="2"></property>
+		<property name="weight" column="product_weight" length="4"></property>
+		<property name="weightUnit" column="product_weight_unit" length="5"></property>
+		
+		<property name="capacity" column="product_capacity" length="5"></property>
+		<property name="capacityUnit" column="product_capacity_unit" length="3"></property>
 		<!-- 状态  0为下架 1 为上架  2为···· -->
 		<property name="status">
 			<column name="product_status" default="0" length="1"></column>

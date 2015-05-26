@@ -29,7 +29,7 @@
 		<junit.version>4.11</junit.version>
 		<!-- validation-api -->
 		<validation-api.version>1.1.0.Final</validation-api.version>
-		
+
 		<!-- 连接池子 -->
 		<c3p0.version>0.9.1.2</c3p0.version>
 		<mysql.version>5.1.34</mysql.version>
@@ -115,7 +115,7 @@
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
-		
+
 		<!-- shiro -->
 		<dependency>
 			<groupId>org.apache.shiro</groupId>

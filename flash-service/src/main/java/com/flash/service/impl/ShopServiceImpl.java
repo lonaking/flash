@@ -7,10 +7,13 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import com.flash.base.web.dto.GuessShop;
+import com.flash.base.web.tool.comparator.GuessShopDistanceComparator;
 import com.flash.commons.earth.EarthUtils;
 import com.flash.dao.ShopDao;
 import com.flash.domain.Shop;
@@ -21,6 +24,8 @@ public class ShopServiceImpl implements ShopService{
 
 	@Resource(name = "shopDao")
 	private ShopDao shopDao;
+	
+	private static final Logger logger = LoggerFactory.getLogger(ShopServiceImpl.class);
 	
 	@Override
 	public List<GuessShop> guessShopsNearby(Double lat, Double lng, int cityId) {
@@ -38,20 +43,28 @@ public class ShopServiceImpl implements ShopService{
 				result.add(guessShop);
 			}
 		}
-		Collections.sort(result, new Comparator<GuessShop>() {
+		Collections.sort(result, new GuessShopDistanceComparator());
+		return result;
+	}
 
-			@Override
-			public int compare(GuessShop gs1, GuessShop gs2) {
-				if(null == gs1 && null == gs2)
-					return 0;
-				if(null == gs1 && null != gs2 && gs2.getDistance() != 0)
-					return -1;
-				if(null != gs1 && null == gs2 && gs1.getDistance() != 0)
-					return 1;
-				int c = gs1.getDistance() - gs2.getDistance();
-				return c;
+	@Override
+	public List<GuessShop> getShopListByCityId(int cityId ,double lng, double lat) {
+		List<Shop> allShop = this.shopDao.findEntitiesByString("cityId", cityId);
+		if(null == allShop || allShop.size() == 0)
+			return null;
+		List<GuessShop> result = new ArrayList<GuessShop>();
+		for (Shop shop : allShop) {
+			GuessShop guessShop = new GuessShop();
+			BeanUtils.copyProperties(shop, guessShop);
+			if((lng != -1 && lat != -1) && ( lng != 0 && lat != 0) ){
+				logger.info("lng = {} , lat = {} , cityId = {}",lng, lat , cityId);
+				double distance = EarthUtils.getDistance(shop.getLng(),
+						shop.getLat(), lng, lat);
+				guessShop.setDistance((int) distance);
 			}
-		});
+			result.add(guessShop);
+		}
+		Collections.sort(result, new GuessShopDistanceComparator());
 		return result;
 	}
 

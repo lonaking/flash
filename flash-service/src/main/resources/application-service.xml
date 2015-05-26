@@ -7,5 +7,5 @@
 	
 	<bean id="shopService" class="com.flash.service.impl.ShopServiceImpl"></bean>
 	
-	
+	<bean id="shopProductService" class="com.flash.service.impl.ShopProductServiceImpl" ></bean>
 </beans>

@@ -28,13 +28,20 @@ public abstract class BaseQuery {
 	public void setCurrentPage(int currentPage) {
 		this.currentPage = Math.max(currentPage, DEFAULT_CURRENTPAGE);
 	}
+	
+	public void setCurrent_page(int currentPage){
+		this.currentPage = Math.max(currentPage, DEFAULT_CURRENTPAGE);
+	}
+	
 	public int getPageSize() {
 		return pageSize;
 	}
 	public void setPageSize(int pageSize) {
 		this.pageSize = Math.max(pageSize, DEFAULT_PAGESIZE);
 	}
-	
+	public void setPage_size(int pageSize){
+		this.pageSize = Math.max(pageSize, DEFAULT_PAGESIZE);
+	}
 	
 	public Map<String, Object> keyValues = new HashMap<String, Object>();
 	public abstract Map<String, Object> buildWhere();

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.flash.base.web.dto.GuessShop;
 import com.flash.base.web.response.BaseResponse;
-import com.flash.domain.Shop;
 import com.flash.service.ShopService;
 
 @Controller
@@ -34,13 +33,33 @@ public class ShopController {
 	 * @return
 	 */
 	@RequestMapping(value = "/shop_guess/{lat}/{lng}/{city}", method = RequestMethod.GET)
-	public @ResponseBody BaseResponse<List<GuessShop>> guessShop(@PathVariable Double lat, @PathVariable Double lng, @PathVariable int city){
+	public @ResponseBody BaseResponse<List<GuessShop>> guessShop(@PathVariable double lat, @PathVariable double lng, @PathVariable int city){
 		List<GuessShop> result = this.shopService.guessShopsNearby(lat, lng, city);
 		return new BaseResponse<List<GuessShop>>(result);
 	}
 	
-	public BaseResponse<List<Shop>> shopsNearby(@PathVariable int city){
-		return null;
+	/**
+	 * 查看某个地区的所有超市，知道地区id，并且知道坐标
+	 * @param city 地区id
+	 * @param lng 纬度
+	 * @param lat 经度
+	 * @return
+	 */
+	@RequestMapping(value = "/shop_list/{city}/{lng}/{lat}")
+	public @ResponseBody BaseResponse<List<GuessShop>> shopListByCity(@PathVariable int city ,@PathVariable double lng,@PathVariable double lat){
+		List<GuessShop> result = this.shopService.getShopListByCityId(city, lng, lat);
+		return new BaseResponse<List<GuessShop>>(result);
+	}
+	
+	/**
+	 * 查看某个地区的所有超市 只知道地区id，不知道坐标
+	 * @param city
+	 * @return
+	 */
+	@RequestMapping(value = "/shop_list/{city}")
+	public @ResponseBody BaseResponse<List<GuessShop>> shopListNearby(@PathVariable int city){
+		List<GuessShop> result = this.shopService.getShopListByCityId(city, 0, 0);
+		return new BaseResponse<List<GuessShop>>(result);
 	}
 	
 }

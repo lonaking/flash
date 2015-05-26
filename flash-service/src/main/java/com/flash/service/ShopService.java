@@ -14,4 +14,10 @@ public interface ShopService {
 	 */
 	public List<GuessShop> guessShopsNearby(Double lat, Double lng, int cityId);
 	
+	/**
+	 * 根据城市id获取该城市下的所有店铺
+	 * @param cityId
+	 * @return
+	 */
+	public List<GuessShop> getShopListByCityId(int cityId, double lng ,double lat);
 }

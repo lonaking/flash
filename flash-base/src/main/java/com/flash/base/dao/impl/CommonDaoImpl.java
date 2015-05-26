@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -97,6 +98,23 @@ public class CommonDaoImpl<T> implements CommonDao<T> {
 	public T findEntityById(Serializable id) {
 		return (T) this.hibernateTemplate.get(this.cla, id);
 	}
+	
+/*	public List<T> findEntitiesByStrings(Map<String, Object> stringMap) {
+		if(null == stringMap || stringMap.size() == 0){
+			return findAll();
+		}
+		int size = stringMap.size();
+		Set<Entry<String, Object>> entrySet = stringMap.entrySet();
+		StringBuffer hql = new StringBuffer("from "+this.getCla().getName());
+//		for (Entry<String, Object> entry : entrySet) {
+//			hql.append(" and "+entry.getKey()+"=? ");
+//		}
+		T t = (T) this.getCla().forName(this.getCla().getName());
+		
+		this.hibernateTemplate.findByValueBean(queryString, valueBean)
+		List<T> result = this.hibernateTemplate.findByNamedParam(hql.toString(),params,values);
+		return result;
+	}*/
 
 	@Override
 	public List<T> findEntitiesByString(String string, Object value) {

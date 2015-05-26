@@ -36,5 +36,12 @@
 			<version>${flash.version}</version>
 		</dependency>
 		
+		<!-- tool -->
+		<dependency>
+			<groupId>com.flash</groupId>
+			<artifactId>flash-base-tool</artifactId>
+			<version>${flash.version}</version>
+		</dependency>
+		
 	</dependencies>
 </project>

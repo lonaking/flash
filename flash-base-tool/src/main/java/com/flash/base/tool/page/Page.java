@@ -3,7 +3,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.flash.base.utils.PageUtils;
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonProperty;
+
+import com.flash.base.tool.page.utils.PageUtils;
 /**
  * 分页信息
  * @author Administrator
@@ -36,6 +39,7 @@ public class Page<T> {
 	/**
 	 * 页码数组,页码栏
 	 */
+	@JsonIgnore
 	private int[] pagesIndex;
 	/**
 	 * 页码数组的字符串表現形式1,2,3,4
@@ -55,6 +59,8 @@ public class Page<T> {
 	 */
 	private List<T> pageData = new ArrayList<T>();
 
+	
+	
 	/**
 	 * 通过当前页面和页面尺寸即可构造出一个Page对象
 	 * @param currentPage
@@ -96,6 +102,13 @@ public class Page<T> {
 		this.pageSize = Math.max(this.pageSize,10);
 	}
 	
+	/**
+	 * 一般不使用此构造方法 只在copyProperties的时候使用
+	 */
+	@Deprecated
+	public Page() {
+		
+	}
 	public final List<T> getPageData() {
 		return pageData;
 	}

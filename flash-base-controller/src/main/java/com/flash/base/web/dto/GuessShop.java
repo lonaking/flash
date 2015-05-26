@@ -1,6 +1,5 @@
 package com.flash.base.web.dto;
 
-import org.codehaus.jackson.annotate.JsonProperty;
 
 /**
  * 猜测用户所在超市
@@ -12,10 +11,8 @@ public class GuessShop {
 	private int id;
 	private String name;
 	private String address;
-	private int distance;
-	@JsonProperty("open_time")
+	private int distance = -1;
 	private String openTime;
-	@JsonProperty("close_time")
 	private String closeTime;
 	private boolean allday = false;
 	private int status = 0;

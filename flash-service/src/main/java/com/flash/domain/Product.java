@@ -22,6 +22,10 @@ public class Product implements Serializable {
 	private String description;
 	private String pic;
 	private String unit;
+	private int weight;
+	private String weightUnit;
+	private int capacity;
+	private String capacityUnit;
 	private int status;// 0下架 1 上架
 	private boolean isDel;
 	/* 所属分组， 商品：分组 多对一 */
@@ -115,6 +119,22 @@ public class Product implements Serializable {
 		this.unit = unit;
 	}
 
+	public int getWeight() {
+		return weight;
+	}
+
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
+
+	public String getWeightUnit() {
+		return weightUnit;
+	}
+
+	public void setWeightUnit(String weightUnit) {
+		this.weightUnit = weightUnit;
+	}
+
 	public int getStatus() {
 		return status;
 	}
@@ -163,4 +183,19 @@ public class Product implements Serializable {
 		this.updateTime = updateTime;
 	}
 
+	public int getCapacity() {
+		return capacity;
+	}
+
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
+	}
+
+	public String getCapacityUnit() {
+		return capacityUnit;
+	}
+
+	public void setCapacityUnit(String capacityUnit) {
+		this.capacityUnit = capacityUnit;
+	}
 }
