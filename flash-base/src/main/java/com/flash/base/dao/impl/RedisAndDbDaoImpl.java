@@ -131,16 +131,25 @@ public class RedisAndDbDaoImpl<T> extends CommonDaoImpl<T>{
 	@Override
 	public T findEntityById(Serializable id) {
 		String key = super.getCla().getName();
+		T t = null;
+		boolean flag = false;
 		try{
-			T t = (T) this.redisService.hgetObj(key, id.toString(), super.getCla());
-			logger.info("success to find {} from redis, id is {}" ,key, id);
-			return t ;
+			t = (T) this.redisService.hgetObj(key, id.toString(), super.getCla());
+			if(null != t){
+				logger.info("success to find {} from redis, id is {}" ,key, id);
+				return t ;
+			}else{
+				flag = true;
+			}
 		}catch(Exception e){
-			logger.info("failed to find {} from redis, id is {}" ,key, id);
-			T t = super.findEntityById(id);
-			logger.info("success to find {} from db, id is {}" ,key, id);
-			return t;
+			flag = true;
 		}
+		if(flag){
+			logger.info("failed to find {} from redis, id is {}" ,key, id);
+			t = super.findEntityById(id);
+			logger.info("success to find {} from db, id is {}" ,key, id);
+		}
+		return t;
 	}
 
 	@Override

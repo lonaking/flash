@@ -20,7 +20,7 @@ public interface CommonService<T> {
 
 	public void saveOrUpdateEntity(T t);
 
-	public T getEntryById(Serializable id);
+	public T getEntityById(Serializable id);
 
 	public void deleteEntryById(Serializable id);
 

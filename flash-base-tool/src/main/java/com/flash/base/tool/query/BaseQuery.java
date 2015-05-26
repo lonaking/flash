@@ -37,7 +37,10 @@ public abstract class BaseQuery {
 		return pageSize;
 	}
 	public void setPageSize(int pageSize) {
-		this.pageSize = Math.max(pageSize, DEFAULT_PAGESIZE);
+		//this.pageSize = Math.max(pageSize, DEFAULT_PAGESIZE);
+		if(pageSize <= 0)
+			this.pageSize = DEFAULT_PAGESIZE;
+		this.pageSize = pageSize;
 	}
 	public void setPage_size(int pageSize){
 		this.pageSize = Math.max(pageSize, DEFAULT_PAGESIZE);

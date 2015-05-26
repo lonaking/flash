@@ -9,7 +9,7 @@ public class ShopProductQuery extends BaseQuery{
 	@Override
 	public Map<String, Object> buildWhere() {
 		if(shopId > 0)
-			super.keyValues.put("id", this.shopId);
+			super.keyValues.put("shop.id", this.shopId);
 		if(null != onsale)
 			super.keyValues.put("onsale", this.onsale);
 		return super.keyValues;

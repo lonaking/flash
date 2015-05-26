@@ -50,8 +50,9 @@ public abstract class CommonServiceImpl<T> implements CommonService<T> {
 	}
 
 	@Override
-	public T getEntryById(Serializable id) {
-		return (T) this.getCommonDao().findEntityById(id);
+	public T getEntityById(Serializable id) {
+		CommonDao<T> commonDao = this.getCommonDao();
+		return (T) commonDao.findEntityById(id);
 	}
 
 	@Override
