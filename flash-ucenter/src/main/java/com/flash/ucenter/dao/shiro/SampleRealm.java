@@ -38,7 +38,7 @@ public class SampleRealm extends AuthorizingRealm {
 	protected AuthorizationInfo doGetAuthorizationInfo(
 			PrincipalCollection principals) {
 		Integer userId = (Integer) principals.fromRealm(getName()).iterator().next();
-		User user = this.userService.getEntryById(userId);
+		User user = this.userDao.findEntityById(userId);
 		if(user != null){
 			SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 			Role role = user.getRole();

@@ -11,8 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.flash.base.dao.CommonDao;
-import com.flash.base.service.impl.CommonServiceImpl;
 import com.flash.commons.json.JsonHelper;
 import com.flash.service.redis.RedisService;
 import com.flash.ucenter.dao.UserDao;
@@ -25,16 +23,10 @@ import com.flash.ucenter.service.UserService;
 import com.flash.ucenter.utils.MD5Utils;
 
 @Service("userService")
-public class UserServiceImpl extends CommonServiceImpl<User> implements UserService {
+public class UserServiceImpl implements UserService {
 	private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 	@Resource(name = "userDao")
 	private UserDao userDao;
-
-	@Override
-	public CommonDao<User> getCommonDao() {
-		return this.userDao;
-	}
-	
 	@Resource(name="redisService")
 	private RedisService redisService;
 	
