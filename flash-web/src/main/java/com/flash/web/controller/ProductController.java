@@ -1,5 +1,7 @@
 package com.flash.web.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
@@ -49,4 +51,5 @@ public class ProductController {
 		BeanUtils.copyProperties(shopProduct.getProduct(), shopProductInfo,new String[]{"id"});
 		return new BaseResponse<ShopProductInfo>(shopProductInfo);
 	}
+	
 }
