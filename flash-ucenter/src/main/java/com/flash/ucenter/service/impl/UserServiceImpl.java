@@ -19,6 +19,7 @@ import com.flash.ucenter.exception.LoginException;
 import com.flash.ucenter.exception.NullInputException;
 import com.flash.ucenter.exception.PasswordErrorException;
 import com.flash.ucenter.exception.UserNotFoundException;
+import com.flash.ucenter.exception.login.NullInputOptions;
 import com.flash.ucenter.service.UserService;
 import com.flash.ucenter.utils.MD5Utils;
 
@@ -38,7 +39,7 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public User login(User user) throws LoginException {
 		if(StringUtils.isEmpty(user.getLoginName()) || StringUtils.isEmpty(user.getPassword())){
-			throw new NullInputException("用户名密码不能为空");
+			throw new NullInputException(NullInputOptions.COMMON,"用户名密码不能为空");
 		}
 		// md5加密
 		String oldPassword = user.getPassword();

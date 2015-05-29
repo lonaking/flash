@@ -7,7 +7,7 @@ package com.flash.ucenter.exception;
  * @date 2015年2月9日
  * @since v 1.0
  */
-public class LoginException extends Exception {
+public class LoginException extends UcenterException {
 
 	private static final long serialVersionUID = -8766594985736519187L;
 
@@ -15,7 +15,11 @@ public class LoginException extends Exception {
 		super();
 	}
 
-	public LoginException(String message) {
+	public LoginException(String code,String message) {
+		super(code, message);
+	}
+	
+	LoginException(String message){
 		super(message);
 	}
 

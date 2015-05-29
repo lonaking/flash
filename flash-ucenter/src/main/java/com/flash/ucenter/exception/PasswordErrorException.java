@@ -14,6 +14,6 @@ public class PasswordErrorException extends LoginException {
 		super();
 	}
 	public PasswordErrorException(String message){
-		super(message);
+		super("202",message);
 	}
 }

@@ -22,7 +22,7 @@ import com.flash.ucenter.domain.Role;
 import com.flash.ucenter.domain.User;
 import com.flash.ucenter.service.UserService;
 @Component
-@Repository("defaultRealm")
+@Repository("sampleRealm")
 public class SampleRealm extends AuthorizingRealm {
 
 	@Resource(name = "userDao")

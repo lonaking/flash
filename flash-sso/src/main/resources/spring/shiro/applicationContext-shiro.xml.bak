@@ -9,7 +9,7 @@
        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 	<!-- 定义连接后台安全数据源的realm -->
-	<bean id="sampleRealm" class="com.waimaizhuanjia.ucenter.shiro.SampleRealm"></bean>
+	<bean id="sampleRealm" class="com.flash.ucenter.dao.shiro.SampleRealm"></bean>
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<!-- 单realm应用。如果有多个realm，使用‘realms’属性代替 -->
 		<property name="realm" ref="sampleRealm" />
