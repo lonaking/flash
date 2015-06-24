@@ -18,7 +18,7 @@
 		</property>
 		<property name="type" length="2" column="privilege_type"></property>
 		<!-- 角色：权限   多对多，一个角色对应多个权限 -->
-		<set name="roles" table="role_privilege_user" cascade="none" inverse="true" lazy="true">
+		<set name="roles" table="role_privilege" cascade="none" inverse="true" lazy="true">
 			<key>
 				<column name="privilege_id" ></column>
 			</key>

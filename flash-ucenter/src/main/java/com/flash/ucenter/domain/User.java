@@ -39,7 +39,7 @@ public class User implements Serializable {
 	private Timestamp regTime;
 	private String regIp;
 	private boolean isDel;
-	private Role role;
+	private Role role = null;
 	
 	public int getId() {
 		return id;

@@ -65,5 +65,4 @@
 	<bean id="obejctMapper" class="org.codehaus.jackson.map.ObjectMapper"></bean>
 	<!-- 导入其他的内容 -->
 	<import resource="../application-redis.xml"/>
-	<import resource="../application-sso.xml"/>
 </beans>

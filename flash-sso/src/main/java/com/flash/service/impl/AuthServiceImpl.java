@@ -6,7 +6,6 @@ import java.util.UUID;
 import javax.annotation.Resource;
 
 import org.apache.commons.lang3.StringUtils;
-import org.hibernate.usertype.LoggableUserType;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -46,14 +45,28 @@ public class AuthServiceImpl implements AuthService{
 			userExists = this.redisService.hgetObj("users", user.getLoginName(), User.class);
 		}catch(Exception e){
 			userExists = this.authDao.findUserByLoginName(user.getLoginName());
-			if(null == userExists)
-				throw new UserNotFoundException(user.getLoginName());
-			if(user.getPassword().equals(userExists.getPassword()))
-				throw new PasswordErrorException("密码错误");
 		}
-		Set<Privilege> privileges = userExists.getRole().getPrivileges();
+		if(null == userExists)
+			throw new UserNotFoundException(user.getLoginName());
+		if(user.getPassword().equals(userExists.getPassword()))//TODO 这里需要加密
+			throw new PasswordErrorException("密码错误");
+		
+		Token token = null;
 		String tokenId = UUID.randomUUID().toString().replace("-", "");
-		Token token = new Token(tokenId, userExists, privileges);
+		try{
+			Set<Privilege> privileges = userExists.getRole().getPrivileges();
+			/*
+			String[] pvgs = new String[privileges.size()];
+			int i = 0;
+			for (Privilege privilege : privileges) {
+				//准备权限数据
+			}
+			*/
+			token = new Token(tokenId, userExists, privileges);
+			
+		}catch(Exception e){
+			token = new Token(tokenId, userExists, null);
+		}
 		this.redisService.setObj("SESSION_"+tokenId, token, 30 * 60);//存入redis
 		//TODO 存入数据库
 		return token;
@@ -61,9 +74,7 @@ public class AuthServiceImpl implements AuthService{
 
 
 	public User findUser(String username) {
-		//return this.authDao.findUserByLoginName(username);
-		User user = this.authDao.findEntityById(12);
-		return user;
+		return this.authDao.findUserByLoginName(username);
 	}
 
 
@@ -78,7 +89,7 @@ public class AuthServiceImpl implements AuthService{
 	public Token checkLogin(String tokenId) throws UcenterException {
 		Token token = this.redisService.getObj(SESSION + tokenId, Token.class);
 		if(null == token) 
-			throw new NotLoginException();
+			throw new NotLoginException(UcenterException.NOTLOGINEXCEPTION_CODE,"未登录");
 		Token currentToken = new Token();
 		BeanUtils.copyProperties(token, currentToken);
 		if(token.getExpireTime() < System.currentTimeMillis())
@@ -96,7 +107,6 @@ public class AuthServiceImpl implements AuthService{
 		if(del == 0){
 			throw new NotLoginException("未登录");
 		}
-		
 	}
 	
 }

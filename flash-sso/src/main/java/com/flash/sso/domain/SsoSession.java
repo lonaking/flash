@@ -1,4 +1,4 @@
-package com.flash.sso;
+package com.flash.sso.domain;
 
 import com.flash.sso.token.Token;
 import com.flash.ucenter.domain.User;

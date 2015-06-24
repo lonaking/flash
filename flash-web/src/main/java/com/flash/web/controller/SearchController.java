@@ -20,7 +20,7 @@ public class SearchController {
 	@RequestMapping(value = "/search/{shopId}/{keywords}")
 	public @ResponseBody BaseResponse<Page<List<ShopProduct>>> search(@PathVariable int shopId, @PathVariable String keywords, ShopProductQuery query){
 		query.setShopId(shopId);
-		Page<List<ShopProduct>> result = this.searchService.searchByKeywords(query, keywords);
-		return result;
+		//Page<List<ShopProduct>> result = this.searchService.searchByKeywords(query, keywords);
+		return new BaseResponse<Page<List<ShopProduct>>>();
 	}
 }

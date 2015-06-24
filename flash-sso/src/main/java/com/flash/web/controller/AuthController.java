@@ -19,13 +19,11 @@ import com.flash.sso.token.Token;
 import com.flash.ucenter.domain.User;
 import com.flash.ucenter.exception.LoginException;
 import com.flash.ucenter.exception.UcenterException;
-import com.flash.ucenter.exception.login.NotLoginException;
 
 @Controller
 @RequestMapping("/auth")
 public class AuthController {
 
-	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory
 			.getLogger(AuthController.class);
 
@@ -51,6 +49,7 @@ public class AuthController {
 	public @ResponseBody BaseResponse<String> login(HttpServletRequest request,
 			HttpServletResponse response, AuthCommond authCommond) {
 		//TODO 校验是否已经登录
+		logger.info("user {} login, password is {}",authCommond.getLoginName(), authCommond.getPassword());
 		Token token = null;
 		BaseResponse<String> result = null;
 		try {
@@ -100,7 +99,7 @@ public class AuthController {
 	public @ResponseBody BaseResponse<?> logout(HttpServletRequest request) throws UcenterException{
 		String tokenId = CookieUtils.getCookie("token", request);
 		try {
-			Token token = this.authService.checkLogin(tokenId);
+			this.authService.checkLogin(tokenId);
 		} catch (UcenterException e) {
 			BaseResponse<String> result = new BaseResponse<String>(e.getCode(),e.getMessage(),"");
 			return result;

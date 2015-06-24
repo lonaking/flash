@@ -131,7 +131,7 @@ public class CommonDaoImpl<T> implements CommonDao<T> {
 		// List<T> list =
 		// this.hibernateTemplate.find("from "+this.cla.getName()+" where ?=?",string,value);
 		List<T> list = findEntitiesByString(string, value);
-		return list.get(0);
+		return null == list ? null : list.get(0);
 	}
 
 	@Override

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.flash.sso.domain.SsoSession" table="sso_session"
+	dynamic-update="true" select-before-update="true" lazy="true">
+		<id name="id" column="session_id">
+			<generator class="native"></generator>
+		</id>
+		<property name="tokenId" column="session_token_id" length="32"/>
+		<property name="expireTime" column="session_expire_time" length="13"/>
+		<property name="createTime" column="session_create_time" length="13"/>
+		<property name="updateTime" column="session_update_time" length="13"/>
+		<many-to-one name="user" class="com.flash.ucenter.domain.User"
+			lazy="false" column="session_user_id" cascade="none" fetch="join"></many-to-one>
+	</class>
+</hibernate-mapping>
