@@ -24,8 +24,8 @@ public class Product implements Serializable {
 	private String unit;
 	private int weight;
 	private String weightUnit;
-	private int capacity;
-	private String capacityUnit;
+	private int capacity;//容量
+	private String capacityUnit;//容量单位
 	private int status;// 0下架 1 上架
 	private boolean isDel;
 	/* 所属分组， 商品：分组 多对一 */

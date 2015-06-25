@@ -9,13 +9,14 @@ public class ShopProduct {
 	private int id;
 	private double shopPrice;// 本商场的价格
 	private Boolean onsale;
+	private String section; // 区域 如食品区／菜品区
 	private int floor;// 楼层
 	private String storage;// 货架
 	private int storageX;// 货架横排
 	private char storageY;// 货架竖排
-	
 	private Product product;
 	private Shop shop;
+
 	public int getId() {
 		return id;
 	}
@@ -58,6 +59,14 @@ public class ShopProduct {
 
 	public void setOnsale(Boolean onsale) {
 		this.onsale = onsale;
+	}
+
+	public String getSection() {
+		return section;
+	}
+
+	public void setSection(String section) {
+		this.section = section;
 	}
 
 	public void setFloor(int floor) {
