@@ -5,6 +5,6 @@ import com.flash.ucenter.domain.User;
 
 public interface AuthDao extends CommonDao<User>{
 
-	public User findUserByLoginName(String username);
+	public User findUserByLoginName(String loginName);
 
 }

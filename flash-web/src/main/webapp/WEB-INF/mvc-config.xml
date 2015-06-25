@@ -17,4 +17,10 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class="com.flash.base.web.privilege.interceptor.PrivilegeInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>

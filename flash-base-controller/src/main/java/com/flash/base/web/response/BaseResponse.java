@@ -14,7 +14,7 @@ public class BaseResponse<T> {
 		this.data = data;
 	}
 	
-	public BaseResponse(String code, String msg, T data) {
+	public BaseResponse(int code, String msg, T data) {
 		super();
 		this.code = code;
 		this.msg = msg;
@@ -22,17 +22,17 @@ public class BaseResponse<T> {
 	}
 
 	// 响应业务状态
-	private String code;
+	private int code;
 	// 响应消息
 	private String msg;
 	// 响应中的数据
 	private T data;
 
-	public String getCode() {
+	public int getCode() {
 		return code;
 	}
 
-	public void setCode(String code) {
+	public void setCode(int code) {
 		this.code = code;
 	}
 

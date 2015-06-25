@@ -40,19 +40,14 @@ public class AuthServiceImpl implements AuthService{
 			throw new NullInputException(NullInputOptions.LOGINNAME, "用户名不能为空");
 		if(StringUtils.isBlank(user.getPassword()))
 			throw new NullInputException(NullInputOptions.PASSWORD, "密码不能为空");
-		User userExists = null;
-		try{
-			userExists = this.redisService.hgetObj("users", user.getLoginName(), User.class);
-		}catch(Exception e){
-			userExists = this.authDao.findUserByLoginName(user.getLoginName());
-		}
+		User userExists = this.authDao.findUserByLoginName(user.getLoginName());
 		if(null == userExists)
 			throw new UserNotFoundException(user.getLoginName());
-		if(user.getPassword().equals(userExists.getPassword()))//TODO 这里需要加密
+		if(!user.getPassword().equals(userExists.getPassword()))//TODO 这里需要加密
 			throw new PasswordErrorException("密码错误");
 		
 		Token token = null;
-		String tokenId = UUID.randomUUID().toString().replace("-", "");
+		String tokenId = UUID.randomUUID().toString();
 		try{
 			Set<Privilege> privileges = userExists.getRole().getPrivileges();
 			/*
@@ -67,7 +62,7 @@ public class AuthServiceImpl implements AuthService{
 		}catch(Exception e){
 			token = new Token(tokenId, userExists, null);
 		}
-		this.redisService.setObj("SESSION_"+tokenId, token, 30 * 60);//存入redis
+		this.redisService.setObj(SESSION + tokenId, token, 30 * 60);//存入redis
 		//TODO 存入数据库
 		return token;
 	}

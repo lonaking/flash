@@ -15,7 +15,7 @@ public class LoginException extends UcenterException {
 		super();
 	}
 
-	public LoginException(String code,String message) {
+	public LoginException(int code,String message) {
 		super(code, message);
 	}
 	

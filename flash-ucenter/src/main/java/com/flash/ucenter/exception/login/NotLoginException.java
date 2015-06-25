@@ -9,7 +9,7 @@ public class NotLoginException extends LoginException{
 		super(NOTLOGINEXCEPTION_CODE, message);
 	}
 
-	public NotLoginException(String code, String message) {
+	public NotLoginException(int code, String message) {
 		super(code, message);
 	}
 }

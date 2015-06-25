@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.flash.base.web.dto.GuessShop;
+import com.flash.base.web.privilege.annotation.PrivilegeAccess;
 import com.flash.base.web.response.BaseResponse;
 import com.flash.service.ShopService;
 
@@ -45,6 +46,7 @@ public class ShopController {
 	 * @param lat 经度
 	 * @return
 	 */
+	@PrivilegeAccess(sign = "shop_list:2")
 	@RequestMapping(value = "/shop_list/{city}/{lng}/{lat}")
 	public @ResponseBody BaseResponse<List<GuessShop>> shopListByCity(@PathVariable int city ,@PathVariable double lng,@PathVariable double lat){
 		List<GuessShop> result = this.shopService.getShopListByCityId(city, lng, lat);

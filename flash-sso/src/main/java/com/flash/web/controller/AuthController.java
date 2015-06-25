@@ -35,12 +35,12 @@ public class AuthController {
 		User findUser = this.authService.findUser(name);
 		BaseResponse<User> response = new BaseResponse<User>();
 		response.setMsg("ping");
-		response.setCode("200");
+		response.setCode(200);
 		response.setData(findUser);
 		return response;
 	}
 	/**
-	 * 登陆
+	 * 登陆 返回给用户tokenId
 	 * 
 	 * @return
 	 * @throws ResponseException
@@ -55,7 +55,7 @@ public class AuthController {
 		try {
 			token = this.authService.login(authCommond);
 		} catch (LoginException e) {
-			result = new BaseResponse<String>("400",e.getMessage(),"");
+			result = new BaseResponse<String>(400, e.getMessage(),"");
 			return result;
 		}
 		CookieUtils.setCookie(request, response, "token", token.getTokenId(), 3600*24*100, "/");
@@ -83,7 +83,7 @@ public class AuthController {
 			BaseResponse<String> result = new BaseResponse<String>(token.getTokenId());
 			return result;
 		}else{
-			BaseResponse<String> result = new BaseResponse<String>("400", "未登录", "");
+			BaseResponse<String> result = new BaseResponse<String>(400, "未登录", "");
 			return result;
 		}
 	}
@@ -105,7 +105,7 @@ public class AuthController {
 			return result;
 		}// null 没登录 !null 已经登录
 		this.authService.logout(tokenId);
-		BaseResponse<String> result = new BaseResponse<String>("200", "退出成功", "");
+		BaseResponse<String> result = new BaseResponse<String>(200, "退出成功", "");
 		return result;
 	}
 }
