@@ -65,6 +65,7 @@ public class ShopServiceImpl implements ShopService{
 			result.add(guessShop);
 		}
 		Collections.sort(result, new GuessShopDistanceComparator());
+		logger.debug("当前线程名称{}",Thread.currentThread().getName());
 		return result;
 	}
 

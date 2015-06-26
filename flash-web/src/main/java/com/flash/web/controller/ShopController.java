@@ -49,6 +49,7 @@ public class ShopController {
 	@PrivilegeAccess(sign = "shop_list:2")
 	@RequestMapping(value = "/shop_list/{city}/{lng}/{lat}")
 	public @ResponseBody BaseResponse<List<GuessShop>> shopListByCity(@PathVariable int city ,@PathVariable double lng,@PathVariable double lat){
+		logger.debug("当前线程名称{}" , Thread.currentThread().getName());
 		List<GuessShop> result = this.shopService.getShopListByCityId(city, lng, lat);
 		return new BaseResponse<List<GuessShop>>(result);
 	}

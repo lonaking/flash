@@ -2,6 +2,7 @@ package com.flash.base.web.privilege.interceptor;
 
 import java.io.PrintWriter;
 import java.lang.reflect.Method;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,10 +31,15 @@ public class PrivilegeInterceptor implements HandlerInterceptor{
 		Method method = handlerMethod.getMethod();
 		PrivilegeAccess privilegeAnnotation = method.getAnnotation(PrivilegeAccess.class);
 		if(null == privilegeAnnotation){
+			String string = UUID.randomUUID().toString();
+			Thread.currentThread().setName(string);
+			logger.debug("stringToken获取到{}", string);
 			return true;
 		}
 		String sign = privilegeAnnotation.sign();
 		String stringToken = request.getHeader("access_token");
+		Thread.currentThread().setName(stringToken);
+		logger.debug("stringToken获取到{}", stringToken);
 		//request.setAttribute(name, o);
 		//从redis中取出来权限判断
 		PrintWriter out = response.getWriter();
