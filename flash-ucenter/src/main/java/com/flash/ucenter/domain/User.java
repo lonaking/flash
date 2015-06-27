@@ -7,6 +7,8 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 /**
  * 用户信息
  * 
@@ -39,6 +41,7 @@ public class User implements Serializable {
 	private Timestamp regTime;
 	private String regIp;
 	private boolean isDel;
+	@JsonIgnore
 	private Role role = null;
 	
 	public int getId() {

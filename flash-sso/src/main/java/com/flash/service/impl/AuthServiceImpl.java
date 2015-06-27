@@ -1,5 +1,7 @@
 package com.flash.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -9,10 +11,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import com.flash.commons.cookie.CookieUtils;
 import com.flash.dao.AuthDao;
 import com.flash.service.AuthService;
 import com.flash.service.redis.RedisService;
-import com.flash.sso.token.Token;
 import com.flash.ucenter.domain.Privilege;
 import com.flash.ucenter.domain.User;
 import com.flash.ucenter.exception.LoginException;
@@ -22,6 +24,7 @@ import com.flash.ucenter.exception.UcenterException;
 import com.flash.ucenter.exception.UserNotFoundException;
 import com.flash.ucenter.exception.login.NotLoginException;
 import com.flash.ucenter.exception.login.NullInputOptions;
+import com.flash.ucenter.privilege.token.Token;
 import com.flash.web.controller.AuthCommond;
 @Service("authService")
 public class AuthServiceImpl implements AuthService{
@@ -49,18 +52,12 @@ public class AuthServiceImpl implements AuthService{
 		Token token = null;
 		String tokenId = UUID.randomUUID().toString();
 		try{
-			Set<Privilege> privileges = userExists.getRole().getPrivileges();
-			/*
-			String[] pvgs = new String[privileges.size()];
-			int i = 0;
-			for (Privilege privilege : privileges) {
-				//准备权限数据
-			}
-			*/
+			Set<Privilege> privilegesList = userExists.getRole().getPrivileges();
+			List<Privilege> privileges = new ArrayList<Privilege>(privilegesList);
 			token = new Token(tokenId, userExists, privileges);
 			
 		}catch(Exception e){
-			token = new Token(tokenId, userExists, null);
+			token = new Token(tokenId, userExists, null);//无任何权限
 		}
 		this.redisService.setObj(SESSION + tokenId, token, 30 * 60);//存入redis
 		//TODO 存入数据库
@@ -72,14 +69,6 @@ public class AuthServiceImpl implements AuthService{
 		return this.authDao.findUserByLoginName(username);
 	}
 
-
-	@Override
-	public boolean checkLogin(User user) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
 	@Override
 	public Token checkLogin(String tokenId) throws UcenterException {
 		Token token = this.redisService.getObj(SESSION + tokenId, Token.class);
@@ -90,8 +79,7 @@ public class AuthServiceImpl implements AuthService{
 		if(token.getExpireTime() < System.currentTimeMillis())
 			currentToken.setExpireTime(System.currentTimeMillis() + 30 * 6000L);
 		currentToken.setUpdateTime(System.currentTimeMillis());
-		this.redisService.setObj(tokenId, currentToken);
-		this.redisService.setObj(tokenId, currentToken, 60 * 30);
+		this.redisService.setObj(SESSION + tokenId, currentToken, 60 * 30);//更新session 30分钟
 		return token;
 	}
 

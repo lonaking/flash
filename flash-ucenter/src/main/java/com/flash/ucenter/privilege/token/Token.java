@@ -1,27 +1,36 @@
-package com.flash.sso.token;
+package com.flash.ucenter.privilege.token;
 
-import java.util.Set;
+import java.util.List;
 
 import com.flash.ucenter.domain.Privilege;
 import com.flash.ucenter.domain.User;
+
 /**
  * 令牌
+ * 
  * @author lonaking
  */
 public class Token {
 
 	private String tokenId;
 	private User user;
-	private Set<Privilege> privileges;
+	private List<Privilege> privileges;
 	private long expireTime;
 	private long createTime;
 	private long updateTime;
+
+	@Override
+	public String toString() {
+		return "Token [tokenId=" + tokenId + ", user=" + user + ", privileges="
+				+ privileges + ", expireTime=" + expireTime + ", createTime="
+				+ createTime + ", updateTime=" + updateTime + "]";
+	}
 
 	public Token() {
 		super();
 	}
 
-	public Token(String tokenId, User user, Set<Privilege> privileges) {
+	public Token(String tokenId, User user, List<Privilege> privileges) {
 		super();
 		this.tokenId = tokenId;
 		this.user = user;
@@ -47,11 +56,11 @@ public class Token {
 		this.user = user;
 	}
 
-	public Set<Privilege> getPrivileges() {
+	public List<Privilege> getPrivileges() {
 		return privileges;
 	}
 
-	public void setPrivileges(Set<Privilege> privileges) {
+	public void setPrivileges(List<Privilege> privileges) {
 		this.privileges = privileges;
 	}
 

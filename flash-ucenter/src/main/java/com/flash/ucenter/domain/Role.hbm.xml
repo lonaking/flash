@@ -13,7 +13,7 @@
 		</property>
 		<property name="name" length="20" column="role_name" unique="true"></property>
 		<!-- 角色：权限   一对多，一个角色对应多个权限 -->
-		<set name="privileges" table="role_privilege" lazy="true" outer-join="true" order-by="id" cascade="none" inverse="false">
+		<set name="privileges" table="role_privilege" lazy="true" order-by="id" cascade="none" inverse="false">
 			<key>
 				<column name="role_id"></column>
 			</key>

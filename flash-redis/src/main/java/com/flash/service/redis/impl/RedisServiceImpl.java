@@ -10,6 +10,8 @@ import java.util.Set;
 import javax.annotation.Resource;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import redis.clients.jedis.ShardedJedis;
@@ -26,6 +28,7 @@ import com.flash.service.redis.RedisService;
  */
 @Service("redisService")
 public class RedisServiceImpl implements RedisService{
+	private static Logger logger = LoggerFactory.getLogger(RedisServiceImpl.class);
 	@Resource(name = "shardedJedisPool")
 	private ShardedJedisPool shardedJedisPool;
 	public void setShardedJedisPool(ShardedJedisPool shardedJedisPool) {
@@ -73,6 +76,7 @@ public class RedisServiceImpl implements RedisService{
 			@Override
 			public String execute(ShardedJedis shardedJedis) {
 				String str = shardedJedis.set(key, value);
+				logger.debug("存入redis成功，返回结果为{}",str);
 				shardedJedis.expire(key, expire);
 				return str;
 			}
@@ -105,6 +109,7 @@ public class RedisServiceImpl implements RedisService{
 	@Override
 	public String setObj(final String key, final Object value, final Integer expire){
 		String strValue = JsonHelper.transObjToJsonString(value);
+		logger.debug("序列化key成功，序列化后的结果是{}",strValue);
 		return set(key, strValue, expire);
 	}
 

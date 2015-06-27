@@ -1,4 +1,4 @@
-package com.flash.base.web.privilege.annotation;
+package com.flash.ucenter.privilege.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

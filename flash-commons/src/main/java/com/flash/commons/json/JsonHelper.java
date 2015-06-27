@@ -23,7 +23,7 @@ public class JsonHelper {
 			str = mapper.writeValueAsString(obj);
 			return str;
 		} catch (IOException e) {
-			LOGGER.error("json转换失败");
+			LOGGER.error("json转换失败,转换的源对象为{}", obj);
 		}
 		return null;
 	}

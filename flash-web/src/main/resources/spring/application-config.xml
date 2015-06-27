@@ -67,4 +67,5 @@
 	<import resource="../application-redis.xml"/>
 	<import resource="../application-service.xml"/>
 	<import resource="../application-web.xml"/>
+	<import resource="../application-ucenter.xml"/>
 </beans>

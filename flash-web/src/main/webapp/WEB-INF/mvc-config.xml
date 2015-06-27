@@ -20,7 +20,7 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
-			<bean class="com.flash.base.web.privilege.interceptor.PrivilegeInterceptor"></bean>
+			<bean class="com.flash.ucenter.privilege.interceptor.PrivilegeInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
 </beans>

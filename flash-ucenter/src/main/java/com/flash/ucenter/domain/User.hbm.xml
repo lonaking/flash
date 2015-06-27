@@ -83,7 +83,6 @@
 		</property>
 
 		<!-- 用户：角色 一对一 -->
-		<many-to-one name="role" class="com.flash.ucenter.domain.Role"
-			lazy="false" column="user_role_id" cascade="none" fetch="join"></many-to-one>
+		<many-to-one name="role" class="com.flash.ucenter.domain.Role" column="user_role_id" cascade="none"></many-to-one>
 	</class>
 </hibernate-mapping>

@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.flash.base.web.response.BaseResponse;
 import com.flash.commons.cookie.CookieUtils;
 import com.flash.service.impl.AuthServiceImpl;
-import com.flash.sso.token.Token;
 import com.flash.ucenter.domain.User;
 import com.flash.ucenter.exception.LoginException;
 import com.flash.ucenter.exception.UcenterException;
+import com.flash.ucenter.privilege.token.Token;
 
 @Controller
 @RequestMapping("/auth")
@@ -96,7 +96,7 @@ public class AuthController {
 	 * @throws UcenterException 
 	 */
 	@RequestMapping(value = "/out", method = RequestMethod.DELETE)
-	public @ResponseBody BaseResponse<?> logout(HttpServletRequest request) throws UcenterException{
+	public @ResponseBody BaseResponse<?> logout(HttpServletRequest request, HttpServletResponse response) throws UcenterException{
 		String tokenId = CookieUtils.getCookie("token", request);
 		try {
 			this.authService.checkLogin(tokenId);
@@ -105,6 +105,7 @@ public class AuthController {
 			return result;
 		}// null 没登录 !null 已经登录
 		this.authService.logout(tokenId);
+		CookieUtils.removeCookie("token",request,response);
 		BaseResponse<String> result = new BaseResponse<String>(200, "退出成功", "");
 		return result;
 	}

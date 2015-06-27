@@ -1,7 +1,7 @@
 package com.flash.sso.domain;
 
-import com.flash.sso.token.Token;
 import com.flash.ucenter.domain.User;
+import com.flash.ucenter.privilege.token.Token;
 
 public class SsoSession {
 	private int id;
