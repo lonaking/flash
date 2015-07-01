@@ -1,6 +1,7 @@
 package com.flash.domain;
 
 import java.sql.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -10,8 +11,8 @@ import java.util.Set;
  */
 public class Activity {
 	private Long id;
-	private Long activityNumber;
-	private String title;
+	private Long activityNumber;//活动编号
+	private String title;//标题
 	private String intro;// 简介
 	private String description;// 描述
 	private Date startTime;
@@ -20,9 +21,9 @@ public class Activity {
 	private Integer num = 0;
 	private Integer status;// 状态 需要定规范
 	private String pic;
-	private String section;
+	private String section;//
 	//TODO 可能要添加位置 x y
-	private Set<ShopProduct> products = null;
+	private Set<ShopProduct> products = new HashSet<ShopProduct>();
 	private Shop shop;
 
 	public Long getId() {

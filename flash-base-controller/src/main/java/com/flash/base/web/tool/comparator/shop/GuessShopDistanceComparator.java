@@ -1,4 +1,4 @@
-package com.flash.base.web.tool.comparator;
+package com.flash.base.web.tool.comparator.shop;
 
 import java.util.Comparator;
 

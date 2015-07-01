@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.flash.base.tool.page.Page;
 import com.flash.base.web.dto.GuessShop;
+import com.flash.base.web.dto.shop.ShopDto;
 import com.flash.base.web.response.BaseResponse;
+import com.flash.base.web.tool.query.ShopQuery;
 import com.flash.service.ShopService;
 import com.flash.ucenter.privilege.annotation.PrivilegeAccess;
 
@@ -63,6 +66,20 @@ public class ShopController {
 	public @ResponseBody BaseResponse<List<GuessShop>> shopListNearby(@PathVariable int city){
 		List<GuessShop> result = this.shopService.getShopListByCityId(city, 0, 0);
 		return new BaseResponse<List<GuessShop>>(result);
+	}
+	
+	/**
+	 * 条件查询超市列表
+	 * @param query
+	 * @return
+	 */
+	@RequestMapping(value = "/shop_list_query",method = RequestMethod.GET)
+	public @ResponseBody BaseResponse<Page<ShopDto>> listShop(ShopQuery query){
+		if(null == query){
+			return new BaseResponse<Page<ShopDto>>(201, "非法的查询", null);
+		}
+		Page<ShopDto> page = this.shopService.listByShopQuery(query);
+		return new BaseResponse<Page<ShopDto>>(page);
 	}
 	
 }

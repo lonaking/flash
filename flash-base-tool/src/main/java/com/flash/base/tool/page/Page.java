@@ -4,12 +4,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
-import org.codehaus.jackson.annotate.JsonProperty;
 
 import com.flash.base.tool.page.utils.PageUtils;
 /**
  * 分页信息
- * @author Administrator
+ * @author leon
  */
 public class Page<T> {
 	/**

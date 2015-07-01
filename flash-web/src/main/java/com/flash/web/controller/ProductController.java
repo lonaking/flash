@@ -1,7 +1,5 @@
 package com.flash.web.controller;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;

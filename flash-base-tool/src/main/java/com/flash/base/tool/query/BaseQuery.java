@@ -8,6 +8,38 @@ import java.util.Map;
  * @author Administrator
  */
 public abstract class BaseQuery {
+	
+	private Map<String, Object> extraData = new HashMap<String, Object>(); 
+	/**
+	 * 存储一个不用于构建搜索的数据
+	 * @param name
+	 * @param value
+	 */
+	public void addOne(String name, Object value){
+		this.extraData.put(name, value);
+	}
+	/**
+	 * 取出一个不用于构建搜索的数据
+	 * @param name
+	 * @return
+	 */
+	public Object getOne(String name){
+		if(null == name || "".equals(name)){
+			return null;
+		}
+		return this.extraData.get(name);
+	}
+	/**
+	 * 取出一个不用于构建搜索的数据
+	 * @param name
+	 * @param t
+	 * @return
+	 */
+	public <T> T getOne(String name, Class<T> cla){
+		Object one = this.getOne(name);
+		T result = (T) one;
+		return result ;
+	}
 	public static final int DEFAULT_PAGESIZE = 10;
 	public static final int DEFAULT_CURRENTPAGE = 1;
 	public static final int SELECT_TODAY = 1;
@@ -16,6 +48,7 @@ public abstract class BaseQuery {
 	public static final int SELECT_BEFORE_MONTH = 4;
 	public static final String DESC = "desc";//降序
 	public static final String ASC = "asc";//升序
+	
 	
 	//当前页
 	private int currentPage = DEFAULT_CURRENTPAGE;
