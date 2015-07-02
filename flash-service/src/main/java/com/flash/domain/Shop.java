@@ -18,213 +18,167 @@ public class Shop implements Serializable {
 	private String tel;
 	private String email;
 	private String address;
-	private int cityId;
+	private Integer cityId;
 	private String openTime;
 	private String closeTime;
-	private int status;
+	private Integer status;
 	private String headPic;
-	private int pattern;
-	private boolean isDel;
-	private int recommend;
+	private Integer pattern;
+	private Boolean isDel;
+	private Integer recommend;
 	private String pin;
 	private String description;
 	private String notice;
-	private int type;
-	private double lng;
-	private double lat;
-	private long createTime;
-	private long updateTime;
-
+	private Integer type;
+	private Double lng;
+	private Double lat;
+	private Long createTime;
+	private Long updateTime;
 	public Integer getId() {
 		return id;
 	}
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	public String getIntro() {
 		return intro;
 	}
-
 	public void setIntro(String intro) {
 		this.intro = intro;
 	}
-
 	public String getLinkManName() {
 		return linkManName;
 	}
-
 	public void setLinkManName(String linkManName) {
 		this.linkManName = linkManName;
 	}
-
 	public String getLinkMobile() {
 		return linkMobile;
 	}
-
 	public void setLinkMobile(String linkMobile) {
 		this.linkMobile = linkMobile;
 	}
-
 	public String getTel() {
 		return tel;
 	}
-
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-
 	public String getEmail() {
 		return email;
 	}
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 	public String getAddress() {
 		return address;
 	}
-
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
-	public int getStatus() {
-		return status;
+	public Integer getCityId() {
+		return cityId;
 	}
-
-	public void setStatus(int status) {
-		this.status = status;
+	public void setCityId(Integer cityId) {
+		this.cityId = cityId;
 	}
-
-	public String getHeadPic() {
-		return headPic;
-	}
-
-	public void setHeadPic(String headPic) {
-		this.headPic = headPic;
-	}
-
-	public int getPattern() {
-		return pattern;
-	}
-
-	public void setPattern(int pattern) {
-		this.pattern = pattern;
-	}
-
-	public boolean getIsDel() {
-		return isDel;
-	}
-
-	public void setIsDel(boolean isDel) {
-		this.isDel = isDel;
-	}
-
-	public int getRecommend() {
-		return recommend;
-	}
-
-	public void setRecommend(int recommend) {
-		this.recommend = recommend;
-	}
-
-	public String getPin() {
-		return pin;
-	}
-
-	public void setPin(String pin) {
-		this.pin = pin;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getNotice() {
-		return notice;
-	}
-
-	public void setNotice(String notice) {
-		this.notice = notice;
-	}
-
-	public int getType() {
-		return type;
-	}
-
-	public void setType(int type) {
-		this.type = type;
-	}
-
-	public double getLng() {
-		return lng;
-	}
-
-	public void setLng(double lng) {
-		this.lng = lng;
-	}
-
-	public double getLat() {
-		return lat;
-	}
-
-	public void setLat(double lat) {
-		this.lat = lat;
-	}
-
-	public long getCreateTime() {
-		return createTime;
-	}
-
-	public void setCreateTime(long createTime) {
-		this.createTime = createTime;
-	}
-
-	public long getUpdateTime() {
-		return updateTime;
-	}
-
-	public void setUpdateTime(long updateTime) {
-		this.updateTime = updateTime;
-	}
-
 	public String getOpenTime() {
 		return openTime;
 	}
-
 	public void setOpenTime(String openTime) {
 		this.openTime = openTime;
 	}
-
 	public String getCloseTime() {
 		return closeTime;
 	}
-
 	public void setCloseTime(String closeTime) {
 		this.closeTime = closeTime;
 	}
-
-	public int getCityId() {
-		return cityId;
+	public Integer getStatus() {
+		return status;
 	}
-
-	public void setCityId(int cityId) {
-		this.cityId = cityId;
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
-
+	public String getHeadPic() {
+		return headPic;
+	}
+	public void setHeadPic(String headPic) {
+		this.headPic = headPic;
+	}
+	public Integer getPattern() {
+		return pattern;
+	}
+	public void setPattern(Integer pattern) {
+		this.pattern = pattern;
+	}
+	public Boolean getIsDel() {
+		return isDel;
+	}
+	public void setIsDel(Boolean isDel) {
+		this.isDel = isDel;
+	}
+	public Integer getRecommend() {
+		return recommend;
+	}
+	public void setRecommend(Integer recommend) {
+		this.recommend = recommend;
+	}
+	public String getPin() {
+		return pin;
+	}
+	public void setPin(String pin) {
+		this.pin = pin;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getNotice() {
+		return notice;
+	}
+	public void setNotice(String notice) {
+		this.notice = notice;
+	}
+	public Integer getType() {
+		return type;
+	}
+	public void setType(Integer type) {
+		this.type = type;
+	}
+	public Double getLng() {
+		return lng;
+	}
+	public void setLng(Double lng) {
+		this.lng = lng;
+	}
+	public Double getLat() {
+		return lat;
+	}
+	public void setLat(Double lat) {
+		this.lat = lat;
+	}
+	public Long getCreateTime() {
+		return createTime;
+	}
+	public void setCreateTime(Long createTime) {
+		this.createTime = createTime;
+	}
+	public Long getUpdateTime() {
+		return updateTime;
+	}
+	public void setUpdateTime(Long updateTime) {
+		this.updateTime = updateTime;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 }

@@ -2,7 +2,6 @@ package com.flash.service.impl;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -12,8 +11,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import com.flash.base.tool.page.Page;
 import com.flash.base.web.dto.GuessShop;
-import com.flash.base.web.tool.comparator.GuessShopDistanceComparator;
+import com.flash.base.web.dto.shop.ShopDto;
+import com.flash.base.web.tool.comparator.shop.GuessShopDistanceComparator;
+import com.flash.base.web.tool.comparator.shop.ShopDtoDistanceComparator;
+import com.flash.base.web.tool.query.ShopQuery;
 import com.flash.commons.earth.EarthUtils;
 import com.flash.dao.ShopDao;
 import com.flash.domain.Shop;
@@ -69,4 +72,34 @@ public class ShopServiceImpl implements ShopService{
 		return result;
 	}
 
+	/**
+	 * 条件查询附近超市，地理位置可以为空
+	 */
+	@Override
+	public Page<ShopDto> listByShopQuery(ShopQuery query) {
+		Page<Shop> shops = this.shopDao.findPage(query);
+		if(null == shops || shops.getTotalCount() == 0) return null;
+		logger.info("根据条件查询出超市成功，共有{}条记录符合条件",shops.getTotalCount());
+		@SuppressWarnings("deprecation")
+		Page<ShopDto> pageResult = new Page<ShopDto>();
+		BeanUtils.copyProperties(shops, pageResult, new String[]{"pageData"});
+		List<ShopDto> shopDtoList = new ArrayList<ShopDto>();
+		for (Shop shop : shops.getPageData()) {
+			ShopDto shopDto = new ShopDto();
+			BeanUtils.copyProperties(shop, shopDto);
+			if(null != query.getOne("lng") && null != query.getOne("lat") && null != shop.getLng() && null != shop.getLat()){
+				if(shop.getLng() > 0 && shop.getLat() > 0 ){
+					double distance = EarthUtils.getDistance(shop.getLng(),
+							shop.getLat(), query.getOne("lng",Double.class), query.getOne("lat",Double.class));
+					shopDto.setDistance((int) distance);
+				}
+			}
+			shopDtoList.add(shopDto);
+		}
+		Collections.sort(shopDtoList, new ShopDtoDistanceComparator());
+		pageResult.setPageData(shopDtoList);
+		logger.debug("当前线程名称{}",Thread.currentThread().getName());
+		return pageResult;
+	}
+	
 }
