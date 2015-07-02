@@ -1,20 +1,11 @@
-package com.flash.domain;
+package com.flash.base.web.dto.activity;
 
 import java.sql.Date;
-import java.util.HashSet;
-import java.util.Set;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
-
-/**
- * 活动
- * 
- * @author lonaking
- */
-public class Activity {
+public class ActivityDto {
 	private Long id;
-	private Long activityNumber;//活动编号
-	private String title;//标题
+	private Long activityNumber;// 活动编号
+	private String title;// 标题
 	private String intro;// 简介
 	private String description;// 描述
 	private Date startTime;
@@ -24,11 +15,6 @@ public class Activity {
 	private Integer status;// 状态 需要定规范
 	private String pic;
 	private String section;//
-	//TODO 可能要添加位置 x y
-	@JsonIgnore
-	private Set<ShopProduct> products = new HashSet<ShopProduct>();
-	@JsonIgnore
-	private Shop shop;
 
 	public Long getId() {
 		return id;
@@ -124,22 +110,6 @@ public class Activity {
 
 	public void setSection(String section) {
 		this.section = section;
-	}
-
-	public Set<ShopProduct> getProducts() {
-		return products;
-	}
-
-	public void setProducts(Set<ShopProduct> products) {
-		this.products = products;
-	}
-
-	public Shop getShop() {
-		return shop;
-	}
-
-	public void setShop(Shop shop) {
-		this.shop = shop;
 	}
 
 }
