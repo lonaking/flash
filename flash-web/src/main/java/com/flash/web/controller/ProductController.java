@@ -21,6 +21,7 @@ import com.flash.service.ShopProductService;
 @RequestMapping(value = "/product")
 public class ProductController {
 
+	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory
 			.getLogger("ProductController");
 	
