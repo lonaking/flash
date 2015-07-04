@@ -8,5 +8,7 @@ import com.flash.base.web.tool.query.ActivityQuery;
 public interface ActivityService{
 
 	public Page<ActivityDto> queryActivitiesByQuery(ActivityQuery query);
+
+	public ActivityDto queryActivityDetailById(Integer activityId);
 	
 }

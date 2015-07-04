@@ -3,6 +3,7 @@ package com.flash.web.controller;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -28,5 +29,11 @@ public class ActivityController {
 	public @ResponseBody BaseResponse<Page<ActivityDto>> activityListQuery(ActivityQuery query){
 		Page<ActivityDto> findPage = this.activityService.queryActivitiesByQuery(query);
 		return new BaseResponse<Page<ActivityDto>>(findPage);
+	}
+	
+	@RequestMapping(value = "/activity_info/{activity_id}")
+	public @ResponseBody BaseResponse<ActivityDto> activityDetail(@PathVariable(value = "activity_id") Integer activityId ){
+		ActivityDto activityDto = this.activityService.queryActivityDetailById(activityId);
+		return new BaseResponse<ActivityDto>(activityDto);
 	}
 }
