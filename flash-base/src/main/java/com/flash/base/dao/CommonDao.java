@@ -1,7 +1,6 @@
 package com.flash.base.dao;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Map;
 
 import com.flash.base.tool.page.Page;
 import com.flash.base.tool.query.BaseQuery;

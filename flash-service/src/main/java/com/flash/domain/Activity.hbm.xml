@@ -26,6 +26,7 @@
 		</property>
 		<property name="section" column="activity_section"></property>
 		<property name="pic" column="activity_pic" length="255"></property>
-
+		<property name="createTime" update="false" column="create_time" length="13"></property>
+		<property name="updateTime" column="update_time" length="13"></property>
 	</class>
 </hibernate-mapping>

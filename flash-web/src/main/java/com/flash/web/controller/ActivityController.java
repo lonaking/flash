@@ -5,10 +5,13 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.flash.base.tool.page.Page;
 import com.flash.base.web.dto.activity.ActivityDto;
+import com.flash.base.web.form.activity.ActivityAddForm;
+import com.flash.base.web.form.activity.ActivityUpdateForm;
 import com.flash.base.web.response.BaseResponse;
 import com.flash.base.web.tool.query.ActivityQuery;
 import com.flash.service.ActivityService;
@@ -21,7 +24,7 @@ public class ActivityController {
 	private ActivityService activityService;
 	
 	/**
-	 * 获取某个超市的促销信息
+	 * 条件查询促销活动信息
 	 * @param shopId
 	 * @return
 	 */
@@ -31,9 +34,38 @@ public class ActivityController {
 		return new BaseResponse<Page<ActivityDto>>(findPage);
 	}
 	
+	/**
+	 * 根据id获取促销活动详情
+	 * @param activityId
+	 * @return
+	 */
 	@RequestMapping(value = "/activity_info/{activity_id}")
-	public @ResponseBody BaseResponse<ActivityDto> activityDetail(@PathVariable(value = "activity_id") Integer activityId ){
+	public @ResponseBody BaseResponse<ActivityDto> activityDetail(@PathVariable(value = "activity_id") Long activityId ){
 		ActivityDto activityDto = this.activityService.queryActivityDetailById(activityId);
+		return new BaseResponse<ActivityDto>(activityDto);
+	}
+	
+	/**
+	 * 添加一个促销活动信息
+	 * @param activity
+	 * @return
+	 * TODO　需要添加权限校验
+	 */
+	@RequestMapping(value = "/activity_add",method = RequestMethod.POST)
+	public @ResponseBody BaseResponse<ActivityDto> addActivity(ActivityAddForm activity){
+		ActivityDto activityDto = this.activityService.addActivity(activity);
+		return new BaseResponse<ActivityDto>(activityDto);
+	}
+	
+	/**
+	 * 更新一条促销活动信息
+	 * @param activityUpdateForm
+	 * @return
+	 * TODO　需要添加权限校验
+	 */
+	@RequestMapping(value = "/activity_update" ,method = RequestMethod.POST)
+	public @ResponseBody BaseResponse<ActivityDto> updateActivity(ActivityUpdateForm activityUpdateForm){
+		ActivityDto activityDto = this.activityService.updateActivity(activityUpdateForm);
 		return new BaseResponse<ActivityDto>(activityDto);
 	}
 }
