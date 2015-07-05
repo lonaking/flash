@@ -23,7 +23,7 @@ public class ProductController {
 
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory
-			.getLogger("ProductController");
+			.getLogger(ProductController.class);
 	
 	@Resource(name = "shopProductService")
 	private ShopProductService shopProductService;
@@ -34,16 +34,16 @@ public class ProductController {
 	 * @param shopId
 	 * @return
 	 */
-	@RequestMapping(value = "/onsale/{shopId}")
-	public @ResponseBody BaseResponse<Page<ShopProductInfo>> onsaleProducts(@PathVariable int shopId, ShopProductQuery query){
+	@RequestMapping(value = "/onsale/{shop_id}")
+	public @ResponseBody BaseResponse<Page<ShopProductInfo>> onsaleProducts(@PathVariable(value="shop_id") int shopId, ShopProductQuery query){
 		query.setOnsale(true);
 		query.setShopId(shopId);
 		Page<ShopProductInfo> result = this.shopProductService.findOnsaleShopProducts(query);
 		return new BaseResponse<Page<ShopProductInfo>>(result);
 	}
 	
-	@RequestMapping(value = "/detail/{shopProductId}")
-	public @ResponseBody BaseResponse<ShopProductInfo> productDetail(@PathVariable int shopProductId){
+	@RequestMapping(value = "/detail/{shop_product_id}")
+	public @ResponseBody BaseResponse<ShopProductInfo> productDetail(@PathVariable(value="shop_product_id") int shopProductId){
 		ShopProduct shopProduct = this.shopProductService.getEntityById(shopProductId);
 		ShopProductInfo shopProductInfo = new ShopProductInfo();
 		BeanUtils.copyProperties(shopProduct, shopProductInfo);

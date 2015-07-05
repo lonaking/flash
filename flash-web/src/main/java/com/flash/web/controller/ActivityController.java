@@ -14,6 +14,7 @@ import com.flash.base.web.form.activity.ActivityAddForm;
 import com.flash.base.web.form.activity.ActivityUpdateForm;
 import com.flash.base.web.response.BaseResponse;
 import com.flash.base.web.tool.query.ActivityQuery;
+import com.flash.exception.base.BaseException;
 import com.flash.service.ActivityService;
 
 @Controller
@@ -27,10 +28,13 @@ public class ActivityController {
 	 * 条件查询促销活动信息
 	 * @param shopId
 	 * @return
+	 * @throws BaseException 
 	 */
 	@RequestMapping(value = "/activity_list_query")
-	public @ResponseBody BaseResponse<Page<ActivityDto>> activityListQuery(ActivityQuery query){
+	public @ResponseBody BaseResponse<Page<ActivityDto>> activityListQuery(ActivityQuery query) throws BaseException{
 		Page<ActivityDto> findPage = this.activityService.queryActivitiesByQuery(query);
+		if(null != query)
+			throw new BaseException(300, "这个异常不舒服");
 		return new BaseResponse<Page<ActivityDto>>(findPage);
 	}
 	

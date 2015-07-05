@@ -23,6 +23,12 @@
 			<artifactId>flash-commons</artifactId>
 			<version>${flash.version}</version>
 		</dependency>
+		<!-- base-exception -->
+		<dependency>
+			<groupId>com.flash</groupId>
+			<artifactId>flash-exception</artifactId>
+			<version>${flash.version}</version>
+		</dependency>
 	</dependencies>
 	
 </project>

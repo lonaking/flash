@@ -3,24 +3,24 @@ package com.flash.exception.base;
 public class BaseException extends Exception {
 	private static final long serialVersionUID = 3003916867081183021L;
 
-	private String code;
+	private Integer code;
 	private String msg;
 
 	public BaseException() {
 		super();
 	}
 
-	public BaseException(String code, String msg) {
+	public BaseException(Integer code, String msg) {
 		super();
 		this.code = code;
 		this.msg = msg;
 	}
 
-	public String getCode() {
+	public Integer getCode() {
 		return code;
 	}
 
-	public void setCode(String code) {
+	public void setCode(Integer code) {
 		this.code = code;
 	}
 
