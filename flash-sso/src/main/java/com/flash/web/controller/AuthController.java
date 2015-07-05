@@ -95,7 +95,7 @@ public class AuthController {
 	 * @return
 	 * @throws UcenterException 
 	 */
-	@RequestMapping(value = "/out", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/out", method = RequestMethod.POST)
 	public @ResponseBody BaseResponse<?> logout(HttpServletRequest request, HttpServletResponse response) throws UcenterException{
 		String tokenId = CookieUtils.getCookie("token", request);
 		try {
