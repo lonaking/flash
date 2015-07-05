@@ -14,12 +14,16 @@ import org.springframework.stereotype.Service;
 import com.flash.base.tool.page.Page;
 import com.flash.base.web.dto.GuessShop;
 import com.flash.base.web.dto.shop.ShopDto;
+import com.flash.base.web.form.shop.ShopAddForm;
+import com.flash.base.web.form.shop.ShopUpdateForm;
 import com.flash.base.web.tool.comparator.shop.GuessShopDistanceComparator;
 import com.flash.base.web.tool.comparator.shop.ShopDtoDistanceComparator;
 import com.flash.base.web.tool.query.ShopQuery;
+import com.flash.commons.bean.BeanAndDtoTransfer;
 import com.flash.commons.earth.EarthUtils;
 import com.flash.dao.ShopDao;
 import com.flash.domain.Shop;
+import com.flash.exception.base.BaseException;
 import com.flash.service.ShopService;
 
 @Service("shopService")
@@ -100,6 +104,44 @@ public class ShopServiceImpl implements ShopService{
 		pageResult.setPageData(shopDtoList);
 		logger.debug("当前线程名称{}",Thread.currentThread().getName());
 		return pageResult;
+	}
+
+	/**
+	 * 添加超市
+	 */
+	@Override
+	public ShopDto addShop(ShopAddForm shopForm) {
+		Shop shop = BeanAndDtoTransfer.PutDtoIntoBean(shopForm, Shop.class);
+		this.shopDao.saveEntity(shop);
+		ShopDto shopDto = BeanAndDtoTransfer.putBeanIntoDto(shop, ShopDto.class);
+		return shopDto;
+	}
+
+	/**
+	 * 更新超市
+	 */
+	@Override
+	public ShopDto updateShop(ShopUpdateForm shopForm) {
+		//TODO 判断是否有权限更新此超市信息
+		Shop shop = BeanAndDtoTransfer.PutDtoIntoBean(shopForm, Shop.class);
+		this.shopDao.updateEntity(shop);
+		ShopDto shopDto = BeanAndDtoTransfer.putBeanIntoDto(shop, ShopDto.class);
+		return shopDto;
+	}
+
+	/**
+	 * 删除超市
+	 */
+	@Override
+	public void softDeleteShopById(Integer shopId) throws BaseException {
+		//TODO 判断是否有权限删除此超市信息
+		Shop shop = this.shopDao.findEntityById(shopId);
+		if(null == shop){
+			throw new BaseException(300, "超市不存在");
+		}else{
+			shop.setIsDel(true);
+			this.shopDao.updateEntity(shop);
+		}
 	}
 	
 }

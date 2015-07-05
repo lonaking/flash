@@ -11,26 +11,13 @@ import java.io.Serializable;
  */
 public class Area implements Serializable{
 	private static final long serialVersionUID = 1L;
-	/**
-	 * 地区id
-	 */
 	private Integer id;
-	/**
-	 * 父地区id
-	 */
 	private Integer pid;
-	/**
-	 * 地区名
-	 */
 	private String name;
 	/**
 	 * 行政范围 0 国家 1 省份 2城市 3县区 4直辖市
 	 */
 	private Integer scope;
-
-	/**
-	 * 地区简介
-	 */
 	private String description;
 	/**
 	 * 地区排序，从1-9这样排序，数字越大，越靠后
@@ -44,19 +31,9 @@ public class Area implements Serializable{
 	 * 地区拼音
 	 */
 	private String pinyin;
-	/**
-	 * 地区深度
-	 */
 	private Integer depth;
-	/**
-	 * 是否是顶级根地区
-	 */
 	private Boolean isRoot;
-	/**
-	 * 地区图片
-	 */
 	private String pic;
-
 	private Double lng;
 	private Double lat;
 

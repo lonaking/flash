@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonProperty;
 
 import com.flash.base.tool.page.utils.PageUtils;
 /**
@@ -11,52 +12,29 @@ import com.flash.base.tool.page.utils.PageUtils;
  * @author leon
  */
 public class Page<T> {
-	/**
-	 * 当前页面 ok
-	 */
-	private int currentPage;
-	/**
-	 * 上一页 ok
-	 */
-	private int beforePage;
-	/**
-	 * 下一页 ok
-	 */
-	private int nextPage;
-	/**
-	 * 页码大小 ok
-	 */
-	private int pageSize;
-	/**
-	 * 当前页面开始页码标号 ok
-	 */
-	private int pageStart;
-	/**
-	 * 当前页面结束页码标号 ok
-	 */
-	private int pageEnd;
-	/**
-	 * 页码数组,页码栏
-	 */
+	@JsonProperty("current_page")
+	private int currentPage;//当前页
+	@JsonProperty("before_page")
+	private int beforePage;//上一页
+	@JsonProperty("next_page")
+	private int nextPage;//下一页
+	@JsonProperty("page_size")
+	private int pageSize;//页码
+	@JsonProperty("page_start")
+	private int pageStart;//当前页码开始标号
+	@JsonProperty("page_end")
+	private int pageEnd;//当前页页码结束标号
+	@JsonProperty("pages_index")
 	@JsonIgnore
-	private int[] pagesIndex;
-	/**
-	 * 页码数组的字符串表現形式1,2,3,4
-	 */
-	private String pagesIndexStr;
-	
-	/**
-	 * 总页数 计算出来
-	 */
-	private int totalPages;
-	/**
-	 * 总记录数 传进来
-	 */
-	private int totalCount;
-	/**
-	 * 当前页显示的数据
-	 */
-	private List<T> pageData = new ArrayList<T>();
+	private int[] pagesIndex;//页码数组
+	@JsonProperty("pages_index_str")
+	private String pagesIndexStr;//页码数组按照字符串排列1,2,3,4,5
+	@JsonProperty("total_pages")
+	private int totalPages;//总页码
+	@JsonProperty("total_count")
+	private int totalCount;//总记录数
+	@JsonProperty("page_data")
+	private List<T> pageData = new ArrayList<T>();//当前页的数据
 
 	
 	

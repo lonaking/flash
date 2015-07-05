@@ -10,13 +10,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.flash.base.tool.page.Page;
 import com.flash.base.web.dto.GuessShop;
 import com.flash.base.web.dto.shop.ShopDto;
+import com.flash.base.web.form.shop.ShopAddForm;
+import com.flash.base.web.form.shop.ShopUpdateForm;
 import com.flash.base.web.response.BaseResponse;
 import com.flash.base.web.tool.query.ShopQuery;
+import com.flash.exception.base.BaseException;
 import com.flash.service.ShopService;
 import com.flash.ucenter.privilege.annotation.PrivilegeAccess;
 
@@ -80,6 +84,43 @@ public class ShopController {
 		}
 		Page<ShopDto> page = this.shopService.listByShopQuery(query);
 		return new BaseResponse<Page<ShopDto>>(page);
+	}
+	
+	/**
+	 * 后台添加商铺api
+	 * @author lonaking
+	 * @param shopForm
+	 * @return
+	 * TODO 添加的权限
+	 */
+	@RequestMapping(value = "/shop_add",method = RequestMethod.POST)
+	public @ResponseBody BaseResponse<ShopDto> addShop(ShopAddForm shopForm){
+		ShopDto shop = this.shopService.addShop(shopForm);
+		return new BaseResponse<ShopDto>(shop);
+	}
+	
+	/**
+	 * 后台更新超市api
+	 * @param shopForm
+	 * @return
+	 * TODO 添加的权限
+	 */
+	@RequestMapping(value = "/shop_update",method = RequestMethod.POST)
+	public @ResponseBody BaseResponse<ShopDto> updateShop(ShopUpdateForm shopForm){
+		ShopDto shop = this.shopService.updateShop(shopForm);
+		return new BaseResponse<ShopDto>(shop);
+	}
+	/**
+	 * 删除一个超市api(软删除)
+	 * @param shopForm
+	 * @return
+	 * TODO 删除的权限
+	 * @throws BaseException 
+	 */
+	@RequestMapping(value = "/shop_del",method = RequestMethod.POST)
+	public @ResponseBody BaseResponse<?> softDeleteShop(@RequestParam(value="shop_id") Integer shopId) throws BaseException{
+		this.shopService.softDeleteShopById(shopId);
+		return new BaseResponse();
 	}
 	
 }

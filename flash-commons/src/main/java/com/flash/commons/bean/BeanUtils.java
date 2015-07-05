@@ -4,7 +4,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BeanUtils{
+public class BeanUtils extends org.springframework.beans.BeanUtils{
 	/**
 	 * 只是将org.springframework.beans.BeanUtils中的copyProperties方法无意义的包装了一下
 	 * @param source
