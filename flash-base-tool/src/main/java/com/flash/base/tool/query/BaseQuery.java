@@ -3,6 +3,8 @@ package com.flash.base.tool.query;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.codehaus.jackson.annotate.JsonProperty;
+
 /**
  * 基本查询,此类封装了进行查询的时候，页面传入的当前页码和每页显示数量
  * @author Administrator
@@ -51,8 +53,10 @@ public abstract class BaseQuery {
 	
 	
 	//当前页
+	@JsonProperty(value="current_page")
 	private int currentPage = DEFAULT_CURRENTPAGE;
 	//每页显示多少数据
+	@JsonProperty(value="page_size")
 	private int pageSize = DEFAULT_PAGESIZE;
 	
 	public int getCurrentPage() {

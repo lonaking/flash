@@ -2,16 +2,19 @@ package com.flash.base.web.tool.query;
 
 import java.util.Map;
 
+import org.codehaus.jackson.annotate.JsonProperty;
+
 import com.flash.base.tool.query.BaseQuery;
 
-public class ShopProductQuery extends BaseQuery{
+public class ShopProductQuery extends BaseQuery {
 
 	@Override
 	public Map<String, Object> buildWhere() {
-		if(shopId > 0)
+		if (null != shopId)
 			super.keyValues.put("shop.id", this.shopId);
-		if(null != onsale)
+		if (null != onsale)
 			super.keyValues.put("onsale", this.onsale);
+		
 		return super.keyValues;
 	}
 
@@ -26,14 +29,17 @@ public class ShopProductQuery extends BaseQuery{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	private int shopId;
+
+	@JsonProperty("shop_id")
+	private Integer shopId;
 	private Boolean onsale;
-	public int getShopId() {
+	private String name;
+
+	public Integer getShopId() {
 		return shopId;
 	}
 
-	public void setShopId(int shopId) {
+	public void setShopId(Integer shopId) {
 		this.shopId = shopId;
 	}
 
@@ -44,4 +50,13 @@ public class ShopProductQuery extends BaseQuery{
 	public void setOnsale(Boolean onsale) {
 		this.onsale = onsale;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 }

@@ -34,14 +34,13 @@ public class ExceptionFilter implements Filter{
 		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
 		HttpServletResponse httpServletResponse = (HttpServletResponse) response;
 		try{
-			chain.doFilter(httpServletRequest, httpServletResponse);
+			chain.doFilter(request, response);
 		}catch(Exception be){
-			logger.debug("运行中出现异常，异常类型{}",be.getClass().getName());
-			if(be instanceof BaseException){
+			if((be.getClass().getName()).equals(BaseException.class.getName())){
 				BaseException baseException = (BaseException) be;
 				BaseResponse<String> result = new BaseResponse<String>();
 				result.setCode(baseException.getCode());
-				result.setMsg(baseException.getMsg());
+				result.setMsg(baseException.getMessage());
 				PrintWriter out = response.getWriter();
 				httpServletResponse.setContentType("application/json");
 				httpServletResponse.setCharacterEncoding("UTF-8");
@@ -53,12 +52,13 @@ public class ExceptionFilter implements Filter{
 			}else{
 				BaseResponse<String> result = new BaseResponse<String>();
 				result.setCode(400);
-				result.setMsg(be.getMessage());
+				String messag = be.getMessage().substring(((be.getMessage().indexOf(":"))+1));
+				result.setMsg(messag.trim());
 				PrintWriter out = response.getWriter();
 				httpServletResponse.setContentType("application/json");
 				httpServletResponse.setCharacterEncoding("UTF-8");
 				String resp = JsonHelper.transObjToJsonString(result);
-				logger.debug("运行中出现业务异常{}",resp);
+				logger.debug("运行中出现非业务异常{}",resp);
 				out.write(resp);//这里有乱码
 				out.close();
 				return ;

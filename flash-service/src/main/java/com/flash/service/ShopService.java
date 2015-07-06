@@ -57,4 +57,11 @@ public interface ShopService {
 	 * @throws BaseException 
 	 */
 	public void softDeleteShopById(Integer shopId) throws BaseException;
+
+	/**
+	 * 获取超市详细信息
+	 * @param shopId
+	 * @return
+	 */
+	public ShopDto getShopInfo(Integer shopId);
 }

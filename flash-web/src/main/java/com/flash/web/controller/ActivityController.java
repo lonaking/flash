@@ -39,7 +39,7 @@ public class ActivityController {
 	}
 	
 	/**
-	 * 根据id获取促销活动详情
+	 * 根据id获取促销活动详情	ok
 	 * @param activityId
 	 * @return
 	 */

@@ -15,6 +15,8 @@ import com.flash.base.tool.query.BaseQuery;
 import com.flash.base.web.dto.ShopProductInfo;
 import com.flash.dao.ShopProductDao;
 import com.flash.domain.ShopProduct;
+import com.flash.exception.NullEntityException;
+import com.flash.exception.base.BaseException;
 import com.flash.service.ShopProductService;
 @Service("shopProductService")
 public class ShopProductServiceImpl extends CommonServiceImpl<ShopProduct> implements ShopProductService{
@@ -45,6 +47,21 @@ public class ShopProductServiceImpl extends CommonServiceImpl<ShopProduct> imple
 		BeanUtils.copyProperties(page, result, new String[]{"pageData"});
 		result.setPageData(resultData);
 		return result;
+	}
+
+	/**
+	 * 根据id查询商品详细信息
+	 * @throws NullEntityException 
+	 */
+	@Override
+	public ShopProductInfo getProductDetail(int shopProductId) throws BaseException {
+		ShopProduct shopProduct = this.shopProductDao.findEntityById(shopProductId);
+		if(null == shopProduct) 
+			throw new NullEntityException("商品不存在");
+		ShopProductInfo shopProductInfo = new ShopProductInfo();
+		BeanUtils.copyProperties(shopProduct, shopProductInfo);
+		BeanUtils.copyProperties(shopProduct.getProduct(), shopProductInfo,new String[]{"id"});
+		return shopProductInfo;
 	}
 
 }

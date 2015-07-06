@@ -24,6 +24,7 @@ import com.flash.commons.earth.EarthUtils;
 import com.flash.dao.ShopDao;
 import com.flash.domain.Shop;
 import com.flash.exception.base.BaseException;
+import com.flash.exception.resource.ExceptionCode;
 import com.flash.service.ShopService;
 
 @Service("shopService")
@@ -34,6 +35,9 @@ public class ShopServiceImpl implements ShopService{
 	
 	private static final Logger logger = LoggerFactory.getLogger(ShopServiceImpl.class);
 	
+	/**
+	 * 猜测用户所在超市
+	 */
 	@Override
 	public List<GuessShop> guessShopsNearby(Double lat, Double lng, int cityId) {
 		List<Shop> allShop = this.shopDao.findEntitiesByString("cityId", cityId);
@@ -142,6 +146,17 @@ public class ShopServiceImpl implements ShopService{
 			shop.setIsDel(true);
 			this.shopDao.updateEntity(shop);
 		}
+	}
+
+	/**
+	 * 获取超市详细信息
+	 */
+	@Override
+	public ShopDto getShopInfo(Integer shopId) {
+		if(null == shopId) return null;
+		Shop shop = this.shopDao.findEntityById(shopId);
+		ShopDto shopDto = BeanAndDtoTransfer.putBeanIntoDto(shop, ShopDto.class);
+		return shopDto;
 	}
 	
 }
