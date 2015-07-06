@@ -3,9 +3,6 @@ package com.flash.ucenter.service.impl;
 import javax.annotation.Resource;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.shiro.session.Session;
-import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -67,33 +64,6 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User findUser(String userName) {
 		return this.userDao.findUserByLoginName(userName);
-	}
-
-	@Override
-	public void login(User user, Subject currentUser) {
-		String string = currentUser.toString();
-		//这个是获取对象主键
-		PrincipalCollection collection = currentUser.getPrincipals();
-		for (Object o : collection) {
-			System.out.println(o);
-		}
-		
-		Object principal = currentUser.getPrincipal();
-		System.out.println(principal);
-		
-		//
-		Session session = currentUser.getSession();
-		System.out.println(session);
-		
-		System.out.println("是否是用户组1："+currentUser.hasRole("管理员"));
-		System.out.println("是否是用户组2："+currentUser.hasRole("店铺管理员"));
-		System.out.println("是否是用户组3："+currentUser.hasRole("普通用户"));
-		System.out.println("是否是用户组4："+currentUser.hasRole("游客"));
-		
-		
-		boolean permitted = currentUser.isPermitted("SCCPFZ_GLY");
-		System.out.println("是否允许权限SCCPFZ_GLY："+permitted);
-		
 	}
 
 	/*
