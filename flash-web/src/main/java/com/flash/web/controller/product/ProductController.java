@@ -15,6 +15,7 @@ import com.flash.base.web.dto.ShopProductInfo;
 import com.flash.base.web.response.BaseResponse;
 import com.flash.base.web.tool.query.ShopProductQuery;
 import com.flash.domain.ShopProduct;
+import com.flash.exception.base.BaseException;
 import com.flash.service.ShopProductService;
 
 @Controller
@@ -34,7 +35,7 @@ public class ProductController {
 	 * @param shopId
 	 * @return
 	 */
-	@RequestMapping(value = "/onsale/{shop_id}")
+	@RequestMapping(value = "/products_onsale/{shop_id}")
 	public @ResponseBody BaseResponse<Page<ShopProductInfo>> onsaleProducts(@PathVariable(value="shop_id") int shopId, ShopProductQuery query){
 		query.setOnsale(true);
 		query.setShopId(shopId);
@@ -42,13 +43,15 @@ public class ProductController {
 		return new BaseResponse<Page<ShopProductInfo>>(result);
 	}
 	
-	@RequestMapping(value = "/detail/{shop_product_id}")
-	public @ResponseBody BaseResponse<ShopProductInfo> productDetail(@PathVariable(value="shop_product_id") int shopProductId){
-		ShopProduct shopProduct = this.shopProductService.getEntityById(shopProductId);
-		ShopProductInfo shopProductInfo = new ShopProductInfo();
-		BeanUtils.copyProperties(shopProduct, shopProductInfo);
-		BeanUtils.copyProperties(shopProduct.getProduct(), shopProductInfo,new String[]{"id"});
-		return new BaseResponse<ShopProductInfo>(shopProductInfo);
+	/**
+	 * 商品详情
+	 * @param shopProductId
+	 * @return
+	 * @throws BaseException 
+	 */
+	@RequestMapping(value = "/product_detail/{shop_product_id}")
+	public @ResponseBody BaseResponse<ShopProductInfo> productDetail(@PathVariable(value="shop_product_id") int shopProductId) throws BaseException{
+		ShopProductInfo productInfo = this.shopProductService.getProductDetail(shopProductId);
+		return new BaseResponse<ShopProductInfo>(productInfo);
 	}
-	
 }

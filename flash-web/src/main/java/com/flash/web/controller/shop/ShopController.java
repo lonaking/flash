@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.collections.MapUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ import com.flash.base.web.form.shop.ShopAddForm;
 import com.flash.base.web.form.shop.ShopUpdateForm;
 import com.flash.base.web.response.BaseResponse;
 import com.flash.base.web.tool.query.ShopQuery;
+import com.flash.commons.earth.EarthUtils;
 import com.flash.exception.base.BaseException;
 import com.flash.service.ShopService;
 import com.flash.ucenter.privilege.annotation.PrivilegeAccess;
@@ -66,8 +68,8 @@ public class ShopController {
 	 * @param city
 	 * @return
 	 */
-	@RequestMapping(value = "/shop_list/{city}")
-	public @ResponseBody BaseResponse<List<GuessShop>> shopListNearby(@PathVariable int city){
+	@RequestMapping(value = "/shop_list/{city_id}")
+	public @ResponseBody BaseResponse<List<GuessShop>> shopListNearby(@PathVariable(value="city_id") int city){
 		List<GuessShop> result = this.shopService.getShopListByCityId(city, 0, 0);
 		return new BaseResponse<List<GuessShop>>(result);
 	}
@@ -84,6 +86,19 @@ public class ShopController {
 		}
 		Page<ShopDto> page = this.shopService.listByShopQuery(query);
 		return new BaseResponse<Page<ShopDto>>(page);
+	}
+	
+	/**
+	 * 获取超市详细信息
+	 */
+	@RequestMapping(value="/shop_detail/{shop_id}")
+	public @ResponseBody BaseResponse<ShopDto> shopDetail(@PathVariable("shop_id") Integer shopId,@PathVariable Double lng,@PathVariable Double lat){
+		ShopDto shop = this.shopService.getShopInfo(shopId);
+		if(null != lng && null != lat){
+			double distance = EarthUtils.getDistance(shop.getLng(), shop.getLat(), lng, lat);
+			shop.setDistance((int) distance);
+		}
+		return new BaseResponse<ShopDto>(shop);
 	}
 	
 	/**
@@ -118,7 +133,7 @@ public class ShopController {
 	 * @throws BaseException 
 	 */
 	@RequestMapping(value = "/shop_del",method = RequestMethod.POST)
-	public @ResponseBody BaseResponse<?> softDeleteShop(@RequestParam(value="shop_id") Integer shopId) throws BaseException{
+	public @ResponseBody BaseResponse<?> deleteShopSoft(@RequestParam(value="shop_id") Integer shopId) throws BaseException{
 		this.shopService.softDeleteShopById(shopId);
 		return new BaseResponse();
 	}

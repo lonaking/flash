@@ -1,21 +1,41 @@
 package com.flash.base.web.dto.shop;
 
+import org.codehaus.jackson.annotate.JsonProperty;
+
 public class ShopDto {
 	private Integer id;
 	private String name;
 	private String intro;
+	
+	@JsonProperty("link_man_name")
 	private String linkManName;
+	
+	@JsonProperty("link_mobile")
 	private String linkMobile;
+	
 	private String tel;
 	private String email;
 	private String address;
+	
+	@JsonProperty("city_id")
 	private Integer cityId;
+	
+	@JsonProperty("open_time")
 	private String openTime;
+	
+	@JsonProperty("close_time")
 	private String closeTime;
+	
 	private Integer status;
+	
+	@JsonProperty("head_pic")
 	private String headPic;
+	
 	private Integer pattern;
+	
+	@JsonProperty("is_del")
 	private Boolean isDel;
+	
 	private Integer recommend;
 	private String pin;
 	private String description;
@@ -23,7 +43,11 @@ public class ShopDto {
 	private Integer type;
 	private Double lng;
 	private Double lat;
+	
+	@JsonProperty("create_time")
 	private Long createTime;
+	
+	@JsonProperty("update_time")
 	private Long updateTime;
 
 	// 超出model
