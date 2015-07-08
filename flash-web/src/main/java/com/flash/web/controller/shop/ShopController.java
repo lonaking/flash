@@ -1,4 +1,4 @@
-package com.flash.web.controller;
+package com.flash.web.controller.shop;
 
 import java.util.List;
 
