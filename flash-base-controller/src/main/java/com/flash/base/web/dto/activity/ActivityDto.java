@@ -2,18 +2,13 @@ package com.flash.base.web.dto.activity;
 
 import java.sql.Date;
 
-import org.codehaus.jackson.annotate.JsonProperty;
-
 public class ActivityDto {
 	private Long id;
-	@JsonProperty("activity_number")
 	private Long activityNumber;// 活动编号
 	private String title;// 标题
 	private String intro;// 简介
 	private String description;// 描述
-	@JsonProperty("start_time")
 	private Date startTime;
-	@JsonProperty("end_time")
 	private Date endTime;
 	private Integer type;// 类型 0促销？ 1买赠？需要定规范
 	private Integer num = 0;

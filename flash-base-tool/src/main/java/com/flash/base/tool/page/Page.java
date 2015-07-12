@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
-import org.codehaus.jackson.annotate.JsonProperty;
 
 import com.flash.base.tool.page.utils.PageUtils;
 /**
@@ -12,28 +11,17 @@ import com.flash.base.tool.page.utils.PageUtils;
  * @author leon
  */
 public class Page<T> {
-	@JsonProperty("current_page")
 	private int currentPage;//当前页
-	@JsonProperty("before_page")
 	private int beforePage;//上一页
-	@JsonProperty("next_page")
 	private int nextPage;//下一页
-	@JsonProperty("page_size")
 	private int pageSize;//页码
-	@JsonProperty("page_start")
 	private int pageStart;//当前页码开始标号
-	@JsonProperty("page_end")
 	private int pageEnd;//当前页页码结束标号
-	@JsonProperty("pages_index")
 	@JsonIgnore
 	private int[] pagesIndex;//页码数组
-	@JsonProperty("pages_index_str")
 	private String pagesIndexStr;//页码数组按照字符串排列1,2,3,4,5
-	@JsonProperty("total_pages")
 	private int totalPages;//总页码
-	@JsonProperty("total_count")
 	private int totalCount;//总记录数
-	@JsonProperty("page_data")
 	private List<T> pageData = new ArrayList<T>();//当前页的数据
 
 	

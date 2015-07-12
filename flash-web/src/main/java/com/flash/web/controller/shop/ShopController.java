@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.collections.MapUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -68,9 +67,9 @@ public class ShopController {
 	 * @param city
 	 * @return
 	 */
-	@RequestMapping(value = "/shop_list/{city_id}")
-	public @ResponseBody BaseResponse<List<GuessShop>> shopListNearby(@PathVariable(value="city_id") int city){
-		List<GuessShop> result = this.shopService.getShopListByCityId(city, 0, 0);
+	@RequestMapping(value = "/shop_list/{cityId}")
+	public @ResponseBody BaseResponse<List<GuessShop>> shopListNearby(@PathVariable(value="cityId") int cityId){
+		List<GuessShop> result = this.shopService.getShopListByCityId(cityId, 0, 0);
 		return new BaseResponse<List<GuessShop>>(result);
 	}
 	

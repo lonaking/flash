@@ -2,8 +2,6 @@ package com.flash.base.web.tool.query;
 
 import java.util.Map;
 
-import org.codehaus.jackson.annotate.JsonProperty;
-
 import com.flash.base.tool.query.BaseQuery;
 
 public class ShopProductQuery extends BaseQuery {
@@ -30,7 +28,6 @@ public class ShopProductQuery extends BaseQuery {
 		return null;
 	}
 
-	@JsonProperty("shop_id")
 	private Integer shopId;
 	private Boolean onsale;
 	private String name;

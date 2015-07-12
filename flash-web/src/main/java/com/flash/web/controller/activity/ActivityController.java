@@ -43,8 +43,8 @@ public class ActivityController {
 	 * @param activityId
 	 * @return
 	 */
-	@RequestMapping(value = "/activity_info/{activity_id}")
-	public @ResponseBody BaseResponse<ActivityDto> activityDetail(@PathVariable(value = "activity_id") Long activityId ){
+	@RequestMapping(value = "/activity_info/{activityId}")
+	public @ResponseBody BaseResponse<ActivityDto> activityDetail(@PathVariable Long activityId ){
 		ActivityDto activityDto = this.activityService.queryActivityDetailById(activityId);
 		return new BaseResponse<ActivityDto>(activityDto);
 	}

@@ -23,7 +23,7 @@ public class SearchController {
 	 * @param query
 	 * @return
 	 */
-	@RequestMapping(value = "/search/{shopId}/{keywords}", method = RequestMethod.POST)
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public @ResponseBody BaseResponse<Page<List<ShopProduct>>> search(ShopProductQuery query){
 		
 		//Page<List<ShopProduct>> result = this.searchService.searchByKeywords(query, keywords);
