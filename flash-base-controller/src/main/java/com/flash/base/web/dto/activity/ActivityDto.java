@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class ActivityDto {
 	private Long id;
-	private Long activityNumber;// 活动编号
+	private String activityNumber;// 活动编号
 	private String title;// 标题
 	private String intro;// 简介
 	private String description;// 描述
@@ -24,11 +24,11 @@ public class ActivityDto {
 		this.id = id;
 	}
 
-	public Long getActivityNumber() {
+	public String getActivityNumber() {
 		return activityNumber;
 	}
 
-	public void setActivityNumber(Long activityNumber) {
+	public void setActivityNumber(String activityNumber) {
 		this.activityNumber = activityNumber;
 	}
 

@@ -7,8 +7,8 @@
 		<id name="id" column="activity_id">
 			<generator class="native"></generator>
 		</id>
-		<property name="activityNumber" type="long">
-			<column name="activity_number" sql-type="bigint" length="20"></column>
+		<property name="activityNumber">
+			<column name="activity_number" sql-type="varchar" length="30"></column>
 		</property>
 		<property name="title" column="activity_title" length="30"></property>
 		<property name="intro" column="activity_intro" length="250"></property>

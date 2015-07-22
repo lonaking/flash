@@ -67,8 +67,8 @@ public class ShopController {
 	 * @param city
 	 * @return
 	 */
-	@RequestMapping(value = "/shop_list/{cityId}")
-	public @ResponseBody BaseResponse<List<GuessShop>> shopListNearby(@PathVariable(value="cityId") int cityId){
+	@RequestMapping(value = "/shop_list")
+	public @ResponseBody BaseResponse<List<GuessShop>> shopListNearby(@PathVariable(value="cityId") int cityId,ShopQuery query){
 		List<GuessShop> result = this.shopService.getShopListByCityId(cityId, 0, 0);
 		return new BaseResponse<List<GuessShop>>(result);
 	}
@@ -91,7 +91,7 @@ public class ShopController {
 	 * 获取超市详细信息
 	 */
 	@RequestMapping(value="/shop_detail/{shop_id}")
-	public @ResponseBody BaseResponse<ShopDto> shopDetail(@PathVariable("shop_id") Integer shopId,@PathVariable Double lng,@PathVariable Double lat){
+	public @ResponseBody BaseResponse<ShopDto> shopDetail(@PathVariable("shop_id") Integer shopId,@RequestParam(required=false) Double lng,@RequestParam(required=false) Double lat){
 		ShopDto shop = this.shopService.getShopInfo(shopId);
 		if(null != lng && null != lat){
 			double distance = EarthUtils.getDistance(shop.getLng(), shop.getLat(), lng, lat);

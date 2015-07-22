@@ -3,6 +3,7 @@ package com.flash.web.controller.activity;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,8 +34,6 @@ public class ActivityController {
 	@RequestMapping(value = "/activity_list_query")
 	public @ResponseBody BaseResponse<Page<ActivityDto>> activityListQuery(ActivityQuery query) throws BaseException{
 		Page<ActivityDto> findPage = this.activityService.queryActivitiesByQuery(query);
-		if(null != query)
-			throw new BaseException(300, "这个异常不舒服");
 		return new BaseResponse<Page<ActivityDto>>(findPage);
 	}
 	
@@ -56,7 +55,7 @@ public class ActivityController {
 	 * TODO　需要添加权限校验
 	 */
 	@RequestMapping(value = "/activity_add",method = RequestMethod.POST)
-	public @ResponseBody BaseResponse<ActivityDto> addActivity(ActivityAddForm activity){
+	public @ResponseBody BaseResponse<ActivityDto> addActivity(@ModelAttribute ActivityAddForm activity){
 		ActivityDto activityDto = this.activityService.addActivity(activity);
 		return new BaseResponse<ActivityDto>(activityDto);
 	}

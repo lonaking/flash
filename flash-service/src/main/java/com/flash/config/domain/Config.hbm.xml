@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.flash.config.domain.Config" table="config" dynamic-update="true" select-before-update="true">
+		<id name="id" column="config_id" >
+			<generator class="native"></generator>
+		</id>
+		<property name="name" column="config_name" length="20" update="false"></property>
+		<property name="sign" column="config_sign" length="20" update="false" unique="true"></property>
+		<property name="value" column="config_value"></property>
+		<property name="description" column="config_description"></property>
+		<property name="type" column="config_type"></property>
+		<property name="listJson" column="config_list_json" update="false"></property>
+		<property name="module" column="config_module"></property>
+		<property name="sort" column="config_sort"></property>
+		<property name="readOnly">
+			<column name="config_read_only" default="false"></column>
+		</property>
+		<property name="helpUrl" column="config_help_url" length="100"></property>
+		<property name="fastOpen" column="config_fast_open" length="5"></property>
+	</class>
+</hibernate-mapping>

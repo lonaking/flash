@@ -8,8 +8,10 @@
 	</parent>
 	<artifactId>flash-base-controller</artifactId>
 	<name>flash-base-controller</name>
-	
-	
+	<properties>
+		<joda.version>2.3</joda.version>
+	</properties>
+
 	<dependencies>
 		<!-- tool -->
 		<dependency>
@@ -29,6 +31,17 @@
 			<artifactId>flash-exception</artifactId>
 			<version>${flash.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>${joda.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate-validator.version}</version>
+		</dependency>
+
 	</dependencies>
-	
+
 </project>

@@ -1,24 +1,47 @@
 package com.flash.base.web.response;
 
-
 public class BaseResponse<T> {
-	
+
 	public BaseResponse() {
 		super();
 	}
 
-	public BaseResponse( T data) {
+	public BaseResponse(T data) {
 		super();
 		this.code = ResponseCode.CODE_OK;
 		this.msg = ResponseMsg.MSG_SUCCESS;
 		this.data = data;
 	}
-	
+
 	public BaseResponse(int code, String msg, T data) {
 		super();
 		this.code = code;
 		this.msg = msg;
 		this.data = data;
+	}
+
+	public static <E> BaseResponse<E> success(E data) {
+		return new BaseResponse<E>(200, "success", data);
+	}
+
+	public static <E> BaseResponse<E> fail(E data) {
+		return new BaseResponse<E>(500, "failed", data);
+	}
+
+	public static <E> BaseResponse<E> fail(String msg, E data) {
+		return new BaseResponse<E>(500, msg, data);
+	}
+
+	public static <E> BaseResponse<E> error() {
+		return new BaseResponse<E>(400, "error", null);
+	}
+
+	public static <E> BaseResponse<E> error(String msg) {
+		return new BaseResponse<E>(400, msg, null);
+	}
+
+	public static <E> BaseResponse<E> error(String msg, E data) {
+		return new BaseResponse<E>(400, msg, data);
 	}
 
 	// 响应业务状态
