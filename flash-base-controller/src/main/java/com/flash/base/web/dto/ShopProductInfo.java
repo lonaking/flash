@@ -1,5 +1,8 @@
 package com.flash.base.web.dto;
 
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+
 
 /**
  * 此dto用于商品信息传输
@@ -7,6 +10,7 @@ package com.flash.base.web.dto;
  * @author leon
  *
  */
+@JsonNaming(PropertyNamingStrategy.LowerCaseWithUnderscoresStrategy.class)
 public class ShopProductInfo {
 	private int id;
 	private String name;

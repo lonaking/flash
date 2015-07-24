@@ -2,8 +2,9 @@ package com.flash.base.web.form.activity;
 
 import java.sql.Date;
 
-import org.codehaus.jackson.annotate.JsonProperty;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ActivityAddForm {
 	@JsonProperty("activity_number")

@@ -1,8 +1,13 @@
 package com.flash.base.web.form.shop;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+@JsonNaming(PropertyNamingStrategy.LowerCaseWithUnderscoresStrategy.class)
 public class ShopAddForm {
 	private String name;
 	private String intro;
+	@JsonProperty("link_man_name")
 	private String linkManName;
 	private String linkMobile;
 	private String tel;

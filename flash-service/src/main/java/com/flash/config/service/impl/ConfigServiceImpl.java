@@ -10,10 +10,10 @@ import java.util.Set;
 import javax.annotation.Resource;
 
 import org.apache.commons.lang3.StringUtils;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.flash.base.dao.CommonDao;
 import com.flash.base.service.impl.CommonServiceImpl;
 import com.flash.config.dao.ConfigDao;

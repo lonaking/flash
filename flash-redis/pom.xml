@@ -20,11 +20,6 @@
 			<artifactId>jedis</artifactId>
 			<version>${jedis.version}</version>
 		</dependency>
-		<!-- commons -->
-		<dependency>
-			<groupId>com.flash</groupId>
-			<artifactId>flash-commons</artifactId>
-			<version>${flash.version}</version>
-		</dependency>
+		
 	</dependencies>
 </project>

@@ -2,7 +2,7 @@ package com.flash.base.web.form.activity;
 
 import java.sql.Date;
 
-import org.codehaus.jackson.annotate.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ActivityUpdateForm {
 	private Long id;

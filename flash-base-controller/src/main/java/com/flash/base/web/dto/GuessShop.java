@@ -1,5 +1,9 @@
 package com.flash.base.web.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+
 
 /**
  * 猜测用户所在超市
@@ -7,11 +11,13 @@ package com.flash.base.web.dto;
  * @author leon
  *
  */
+@JsonNaming(PropertyNamingStrategy.LowerCaseWithUnderscoresStrategy.class)
 public class GuessShop {
 	private int id;
 	private String name;
 	private String address;
 	private int distance = -1;
+	@JsonProperty(value="open_time")
 	private String openTime;
 	private String closeTime;
 	private boolean allday = false;

@@ -3,7 +3,7 @@ package com.flash.base.tool.query;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.codehaus.jackson.annotate.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * 基本查询,此类封装了进行查询的时候，页面传入的当前页码和每页显示数量

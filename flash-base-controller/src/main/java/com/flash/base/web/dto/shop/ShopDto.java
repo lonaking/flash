@@ -1,11 +1,13 @@
 package com.flash.base.web.dto.shop;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 public class ShopDto {
 	private Integer id;
 	private String name;
 	private String intro;
-	
+	@JsonProperty("link_man_name")
 	private String linkManName;
 	
 	private String linkMobile;

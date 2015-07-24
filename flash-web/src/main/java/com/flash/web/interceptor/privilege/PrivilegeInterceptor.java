@@ -1,4 +1,4 @@
-package com.flash.ucenter.privilege.interceptor;
+package com.flash.web.interceptor.privilege;
 
 import java.io.PrintWriter;
 import java.lang.reflect.Method;

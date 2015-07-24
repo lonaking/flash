@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
-
 /**
  * 权限
  * 
@@ -24,7 +22,6 @@ public class Privilege implements Serializable {
 	private Integer type;// 1表示菜单 2表示操作 的元素
 	private boolean checked = false;// 是否选中，不放数据库
 	/* 权限：角色 一对多 一个权限对应多个角色 */
-	@JsonIgnore
 	private Set<Role> roles = new HashSet<Role>();
 
 	public Integer getId() {
