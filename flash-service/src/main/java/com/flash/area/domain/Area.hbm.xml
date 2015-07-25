@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.flash.area.domain.Area" table="area">
+		<id name="id" column="area_id">
+			<generator class="native"></generator>
+		</id>
+		<property name="pid" column="area_pid" length="5"></property>
+		<property name="name" column="area_name" length="10"></property>
+		<property name="description" column="area_description" length="250"></property>
+		<property name="sort" column="area_sort" length="10"></property>
+		<property name="pin" column="area_pin" length="10" update="false"></property>
+		<property name="pinyin" column="area_pinyin" length="100" update="false"></property>
+		<property name="depth" column="area_depth" length="1"></property>
+		<property name="scope">
+			<column name="area_scope" length="1" default="2"></column>
+		</property>
+		<property name="isRoot" column="area_isroot"></property>
+		<property name="pic" column="area_pic" length="50"></property>
+		<property name="lng">
+			<column name="area_lng" sql-type="double(12,5)"></column>
+		</property>
+		<property name="lat">
+			<column name="area_lat" sql-type="double(12,5)"></column>
+		</property>
+	</class>
+</hibernate-mapping>

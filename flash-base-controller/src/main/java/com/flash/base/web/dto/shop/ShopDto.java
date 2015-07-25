@@ -9,7 +9,7 @@ public class ShopDto {
 	private String intro;
 	@JsonProperty("link_man_name")
 	private String linkManName;
-	
+	@JsonProperty("link_mobile")
 	private String linkMobile;
 	
 	private String tel;

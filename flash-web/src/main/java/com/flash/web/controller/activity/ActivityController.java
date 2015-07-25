@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.flash.activity.service.ActivityService;
 import com.flash.base.tool.page.Page;
 import com.flash.base.web.dto.activity.ActivityDto;
 import com.flash.base.web.form.activity.ActivityAddForm;
@@ -16,7 +17,6 @@ import com.flash.base.web.form.activity.ActivityUpdateForm;
 import com.flash.base.web.response.BaseResponse;
 import com.flash.base.web.tool.query.ActivityQuery;
 import com.flash.exception.base.BaseException;
-import com.flash.service.ActivityService;
 
 @Controller
 @RequestMapping("/activity")

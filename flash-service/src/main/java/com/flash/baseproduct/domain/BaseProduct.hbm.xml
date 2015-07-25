@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.flash.baseproduct.domain.BaseProduct" table="product" select-before-update="true" dynamic-update="true" lazy="false" >
+		<id name="id" column="product_id">
+			<generator class="native"></generator>
+		</id>
+		<!-- 商品名 -->
+		<property name="name" column="product_name" length="50"></property>
+		<!-- 条形码 -->
+		<property name="barcode" column="product_barcode" length="30"></property>
+		<!-- 菜标题 -->
+		<property name="title" column="product_title" length="50"></property>
+		<!-- 价格 -->
+		<property name="price">
+			<column name="product_price" sql-type="double(8,2)" default="0.0"></column>
+		</property>
+		<!-- 简介 -->
+		<property name="intro" column="product_intro" length="200" ></property>
+		<!-- 描述  长的-->
+		<property name="description">
+			<column name="product_description" sql-type="text" ></column>
+		</property>
+		<!-- 图片 -->
+		<property name="pic" column="product_pic"></property>
+		<!-- 单位 -->
+		<property name="unit" column="product_unit" length="2"></property>
+		<property name="weight" column="product_weight" length="4"></property>
+		<property name="weightUnit" column="product_weight_unit" length="5"></property>
+		
+		<property name="capacity" column="product_capacity" length="5"></property>
+		<property name="capacityUnit" column="product_capacity_unit" length="3"></property>
+		<!-- 状态  0为下架 1 为上架  2为···· -->
+		<property name="status">
+			<column name="product_status" default="0" length="1"></column>
+		</property>
+		<!-- 是否删除 -->
+		<property name="isDel">
+			<column name="product_is_del" default="false"></column>
+		</property>
+		<!-- 商品分组 一对一-->
+		<property name="groupId" column="product_group_id" length="11"></property>
+		<!-- 添加时间 -->
+		<property name="addTime" update="false" column="product_add_time" length="13"></property>
+		<!-- 最后更新事件  -->
+		<property name="updateTime" column="product_update_time" length="13"></property>
+		
+	</class>
+</hibernate-mapping>

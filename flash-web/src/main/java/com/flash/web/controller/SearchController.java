@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.flash.base.tool.page.Page;
 import com.flash.base.web.response.BaseResponse;
 import com.flash.base.web.tool.query.ShopProductQuery;
-import com.flash.domain.ShopProduct;
+import com.flash.product.domain.ShopProduct;
 
 @Controller
 @RequestMapping(value = "/search")

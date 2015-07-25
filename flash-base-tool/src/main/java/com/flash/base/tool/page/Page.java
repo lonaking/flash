@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.flash.base.tool.page.utils.PageUtils;
 /**
  * 分页信息
@@ -13,6 +14,7 @@ public class Page<T> {
 	private int currentPage;//当前页
 	private int beforePage;//上一页
 	private int nextPage;//下一页
+	@JsonProperty("page_size_de")
 	private int pageSize;//页码
 	private int pageStart;//当前页码开始标号
 	private int pageEnd;//当前页页码结束标号

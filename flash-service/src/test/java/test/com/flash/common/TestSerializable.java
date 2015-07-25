@@ -1,11 +1,9 @@
 package test.com.flash.common;
 
 import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
 
-import com.flash.base.dao.impl.CommonDaoImpl;
-import com.flash.domain.Product;
+import com.flash.baseproduct.domain.BaseProduct;
 
 public class TestSerializable {
 	public static void main(String[] args) {
@@ -13,7 +11,7 @@ public class TestSerializable {
 		Integer abc = 1;
 		String string = abc.toString();
 		System.out.println(string);
-		TestABC<Product> abc2 = new TestABC<Product>();
+		TestABC<BaseProduct> abc2 = new TestABC<BaseProduct>();
 		Class<? extends TestABC> class1 = abc2.getClass();
 		System.out.println(class1);
 		TypeVariable<?>[] typeParameters = class1.getTypeParameters();

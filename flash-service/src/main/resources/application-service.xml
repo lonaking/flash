@@ -5,9 +5,9 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 	
-	<bean id="shopService" class="com.flash.service.impl.ShopServiceImpl"></bean>
+	<bean id="shopService" class="com.flash.shop.service.impl.ShopServiceImpl"></bean>
 	
-	<bean id="shopProductService" class="com.flash.service.impl.ShopProductServiceImpl" ></bean>
+	<bean id="shopProductService" class="com.flash.product.service.impl.ShopProductServiceImpl" ></bean>
 	
-	<bean id="activityService" class="com.flash.service.impl.ActivityServiceImpl"></bean>
+	<bean id="activityService" class="com.flash.activity.service.impl.ActivityServiceImpl"></bean>
 </beans>

@@ -14,6 +14,7 @@
 		<apache-commons-lang3.version>3.1</apache-commons-lang3.version>
 		<!-- apache commons io -->
 		<apache-commons-io.version>2.4</apache-commons-io.version>
+		<commons-fileupload.version>1.2.2</commons-fileupload.version>
 		<!-- apache httpClient -->
 		<httpclient.version>4.3.6</httpclient.version>
 	</properties>
@@ -32,6 +33,11 @@
 			<artifactId>commons-io</artifactId>
 			<version>${apache-commons-io.version}</version>
 		</dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>${commons-fileupload.version}</version>
+        </dependency>
 		<!-- httpClient -->
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>

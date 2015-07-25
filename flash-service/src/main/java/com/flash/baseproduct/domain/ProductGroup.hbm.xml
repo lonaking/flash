@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.flash.baseproduct.domain.ProductGroup" table="product_group" dynamic-update="true">
+		<id name="id" column="group_id">
+			<generator class="native"></generator>
+		</id>
+		<!-- 分组名 -->
+		<property name="name" column="group_name" length="30"></property>
+		<!-- 上级id -->
+		<property name="parentId" column="parent_id" length="11"></property>
+	</class>
+</hibernate-mapping>

@@ -14,7 +14,7 @@ import com.flash.base.web.dto.ShopProductInfo;
 import com.flash.base.web.response.BaseResponse;
 import com.flash.base.web.tool.query.ShopProductQuery;
 import com.flash.exception.base.BaseException;
-import com.flash.service.ShopProductService;
+import com.flash.product.service.ShopProductService;
 
 @Controller
 @RequestMapping(value = "/product")

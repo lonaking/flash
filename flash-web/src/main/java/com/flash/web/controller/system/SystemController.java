@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.flash.base.web.dto.system.VersionUpdateDto;
 import com.flash.base.web.form.system.CheckVersionForm;
 import com.flash.base.web.response.BaseResponse;
-import com.flash.service.SystemService;
+import com.flash.system.service.SystemService;
 
 @Controller
 @RequestMapping(value="/sys")

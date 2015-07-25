@@ -22,7 +22,7 @@ import com.flash.base.web.response.BaseResponse;
 import com.flash.base.web.tool.query.ShopQuery;
 import com.flash.commons.earth.EarthUtils;
 import com.flash.exception.base.BaseException;
-import com.flash.service.ShopService;
+import com.flash.shop.service.ShopService;
 import com.flash.ucenter.privilege.annotation.PrivilegeAccess;
 
 @Controller

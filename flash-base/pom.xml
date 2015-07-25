@@ -8,7 +8,7 @@
 	</parent>
 	<artifactId>flash-base</artifactId>
 	<name>flash-base</name>
-	
+
 	<dependencies>
 		<!-- 2.3 连接池 -->
 		<dependency>
@@ -35,26 +35,26 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 			<version>${spring-framework.version}</version>
 		</dependency>
-		
+
 		<!-- redis -->
 		<dependency>
 			<groupId>com.flash</groupId>
 			<artifactId>flash-redis</artifactId>
 			<version>${flash.version}</version>
 		</dependency>
-		
+
 		<!-- tool -->
 		<dependency>
 			<groupId>com.flash</groupId>
 			<artifactId>flash-base-tool</artifactId>
 			<version>${flash.version}</version>
 		</dependency>
-		
+
 	</dependencies>
 </project>
