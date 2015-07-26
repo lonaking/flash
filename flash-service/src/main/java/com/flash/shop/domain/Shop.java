@@ -10,10 +10,7 @@ public class Shop {
 	private Integer id;
 	private String name;
 	private String intro;
-	private String linkManName;
-	private String linkMobile;
 	private String tel;
-	private String email;
 	private String address;
 	private Integer cityId;
 	private String openTime;
@@ -21,14 +18,14 @@ public class Shop {
 	private Integer status;
 	private String headPic;
 	private Integer pattern;
-	private Boolean isDel;
+	private Boolean del;
 	private Integer recommend;
-	private String pin;
+	private String pinyinName;
 	private String description;
 	private String notice;
 	private Integer type;
-	private Double lng;
-	private Double lat;
+	private Double longitude;
+	private Double latitude;
 	private Long createTime;
 	private Long updateTime;
 
@@ -56,36 +53,12 @@ public class Shop {
 		this.intro = intro;
 	}
 
-	public String getLinkManName() {
-		return linkManName;
-	}
-
-	public void setLinkManName(String linkManName) {
-		this.linkManName = linkManName;
-	}
-
-	public String getLinkMobile() {
-		return linkMobile;
-	}
-
-	public void setLinkMobile(String linkMobile) {
-		this.linkMobile = linkMobile;
-	}
-
 	public String getTel() {
 		return tel;
 	}
 
 	public void setTel(String tel) {
 		this.tel = tel;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getAddress() {
@@ -144,12 +117,12 @@ public class Shop {
 		this.pattern = pattern;
 	}
 
-	public Boolean getIsDel() {
-		return isDel;
+	public Boolean getDel() {
+		return del;
 	}
 
-	public void setIsDel(Boolean isDel) {
-		this.isDel = isDel;
+	public void setDel(Boolean del) {
+		this.del = del;
 	}
 
 	public Integer getRecommend() {
@@ -160,12 +133,12 @@ public class Shop {
 		this.recommend = recommend;
 	}
 
-	public String getPin() {
-		return pin;
+	public String getPinyinName() {
+		return pinyinName;
 	}
 
-	public void setPin(String pin) {
-		this.pin = pin;
+	public void setPinyinName(String pinyinName) {
+		this.pinyinName = pinyinName;
 	}
 
 	public String getDescription() {
@@ -192,20 +165,20 @@ public class Shop {
 		this.type = type;
 	}
 
-	public Double getLng() {
-		return lng;
+	public Double getLongitude() {
+		return longitude;
 	}
 
-	public void setLng(Double lng) {
-		this.lng = lng;
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
 	}
 
-	public Double getLat() {
-		return lat;
+	public Double getLatitude() {
+		return latitude;
 	}
 
-	public void setLat(Double lat) {
-		this.lat = lat;
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
 	}
 
 	public Long getCreateTime() {
@@ -223,4 +196,5 @@ public class Shop {
 	public void setUpdateTime(Long updateTime) {
 		this.updateTime = updateTime;
 	}
+
 }

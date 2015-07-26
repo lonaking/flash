@@ -45,8 +45,8 @@ public class ShopServiceImpl implements ShopService{
 			return null;
 		List<GuessShop> result = new ArrayList<GuessShop>();
 		for (Shop shop : allShop) {
-			double distance = EarthUtils.getDistance(shop.getLng(),
-					shop.getLat(), lng, lat);
+			double distance = EarthUtils.getDistance(shop.getLongitude(),
+					shop.getLatitude(), lng, lat);
 			if(distance <= 2000){
 				GuessShop guessShop = new GuessShop();
 				BeanUtils.copyProperties(shop, guessShop);
@@ -69,8 +69,8 @@ public class ShopServiceImpl implements ShopService{
 			BeanUtils.copyProperties(shop, guessShop);
 			if((lng != -1 && lat != -1) && ( lng != 0 && lat != 0) ){
 				logger.info("lng = {} , lat = {} , cityId = {}",lng, lat , cityId);
-				double distance = EarthUtils.getDistance(shop.getLng(),
-						shop.getLat(), lng, lat);
+				double distance = EarthUtils.getDistance(shop.getLongitude(),
+						shop.getLatitude(), lng, lat);
 				guessShop.setDistance((int) distance);
 			}
 			result.add(guessShop);
@@ -95,10 +95,10 @@ public class ShopServiceImpl implements ShopService{
 		for (Shop shop : shops.getPageData()) {
 			ShopDto shopDto = new ShopDto();
 			BeanUtils.copyProperties(shop, shopDto);
-			if(null != query.getOne("lng") && null != query.getOne("lat") && null != shop.getLng() && null != shop.getLat()){
-				if(shop.getLng() > 0 && shop.getLat() > 0 ){
-					double distance = EarthUtils.getDistance(shop.getLng(),
-							shop.getLat(), query.getOne("lng",Double.class), query.getOne("lat",Double.class));
+			if(null != query.getOne("lng") && null != query.getOne("lat") && null != shop.getLongitude() && null != shop.getLatitude()){
+				if(shop.getLongitude() > 0 && shop.getLatitude() > 0 ){
+					double distance = EarthUtils.getDistance(shop.getLongitude(),
+							shop.getLatitude(), query.getOne("lng",Double.class), query.getOne("lat",Double.class));
 					shopDto.setDistance((int) distance);
 				}
 			}
@@ -143,7 +143,7 @@ public class ShopServiceImpl implements ShopService{
 		if(null == shop){
 			throw new ShopServiceException(ShopServiceExceptionCode.SHOP_IS_NOT_FOUND);
 		}else{
-			shop.setIsDel(true);
+			shop.setDel(true);
 			this.shopDao.updateEntity(shop);
 		}
 	}

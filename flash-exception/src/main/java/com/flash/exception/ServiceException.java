@@ -42,6 +42,7 @@ public class ServiceException extends Exception {
 		super(ExceptionHelper.getMessage(code));
 		this.errorCode = ExceptionHelper.getCode(code);
 		this.errorMessage = this.getMessage();
+		this.name = code.name();
 	}
 
 	public ServiceException(ExceptionCode code, String message, Throwable cause, boolean enableSuppression,
@@ -49,24 +50,28 @@ public class ServiceException extends Exception {
 		super(message, cause, enableSuppression, writableStackTrace);
 		this.errorCode = ExceptionHelper.getCode(code);
 		this.errorMessage = ExceptionHelper.getMessage(code);
+		this.name = code.name();
 	}
 
 	public ServiceException(ExceptionCode code, String message, Throwable cause) {
 		super(message, cause);
 		this.errorCode = ExceptionHelper.getCode(code);
 		this.errorMessage = ExceptionHelper.getMessage(code);
+		this.name = code.name();
 	}
 
 	public ServiceException(ExceptionCode code, String message) {
 		super(message);
 		this.errorCode = ExceptionHelper.getCode(code);
 		this.errorMessage = ExceptionHelper.getMessage(code);
+		this.name = code.name();
 	}
 
 	public ServiceException(ExceptionCode code, Throwable cause) {
 		super(ExceptionHelper.getMessage(code), cause);
 		this.errorCode = ExceptionHelper.getCode(code);
 		this.errorMessage = this.getMessage();
+		this.name = code.name();
 	}
 
 	public ServiceException(String msg) {

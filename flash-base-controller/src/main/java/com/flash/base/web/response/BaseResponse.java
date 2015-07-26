@@ -32,6 +32,9 @@ public class BaseResponse<T> {
 		return new BaseResponse<E>(500, msg, data);
 	}
 
+	public static <E> BaseResponse<E> faild(Integer code, String msg, E data){
+		return new BaseResponse<E>(code, msg, data);
+	}
 	public static <E> BaseResponse<E> error() {
 		return new BaseResponse<E>(400, "error", null);
 	}

@@ -12,10 +12,11 @@ import com.flash.base.web.form.system.CheckVersionForm;
 import com.flash.base.web.form.system.FeedBackForm;
 import com.flash.base.web.response.BaseResponse;
 import com.flash.system.service.SystemService;
+import com.flash.web.framework.WebApiBaseController;
 
 @Controller
 @RequestMapping(value="/sys")
-public class SystemController {
+public class SystemController extends WebApiBaseController{
 	@Resource(name="systemService")
 	private SystemService systemService;
 	
