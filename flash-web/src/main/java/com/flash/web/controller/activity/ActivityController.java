@@ -16,7 +16,6 @@ import com.flash.base.web.form.activity.ActivityAddForm;
 import com.flash.base.web.form.activity.ActivityUpdateForm;
 import com.flash.base.web.response.BaseResponse;
 import com.flash.base.web.tool.query.ActivityQuery;
-import com.flash.exception.base.BaseException;
 
 @Controller
 @RequestMapping("/activity")
@@ -32,7 +31,7 @@ public class ActivityController {
 	 * @throws BaseException 
 	 */
 	@RequestMapping(value = "/activity_list_query")
-	public @ResponseBody BaseResponse<Page<ActivityDto>> activityListQuery(ActivityQuery query) throws BaseException{
+	public @ResponseBody BaseResponse<Page<ActivityDto>> activityListQuery(ActivityQuery query){
 		Page<ActivityDto> findPage = this.activityService.queryActivitiesByQuery(query);
 		return new BaseResponse<Page<ActivityDto>>(findPage);
 	}

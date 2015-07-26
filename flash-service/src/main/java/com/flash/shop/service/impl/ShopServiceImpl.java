@@ -21,9 +21,10 @@ import com.flash.base.web.tool.comparator.shop.ShopDtoDistanceComparator;
 import com.flash.base.web.tool.query.ShopQuery;
 import com.flash.commons.bean.BeanAndDtoTransfer;
 import com.flash.commons.earth.EarthUtils;
-import com.flash.exception.base.BaseException;
 import com.flash.shop.dao.ShopDao;
 import com.flash.shop.domain.Shop;
+import com.flash.shop.exception.ShopServiceException;
+import com.flash.shop.exception.ShopServiceExceptionCode;
 import com.flash.shop.service.ShopService;
 
 @Service("shopService")
@@ -114,9 +115,9 @@ public class ShopServiceImpl implements ShopService{
 	 */
 	@Override
 	public ShopDto addShop(ShopAddForm shopForm) {
-		Shop shop = BeanAndDtoTransfer.PutDtoIntoBean(shopForm, Shop.class);
+		Shop shop = BeanAndDtoTransfer.transOneToAnoter(shopForm, Shop.class);
 		this.shopDao.saveEntity(shop);
-		ShopDto shopDto = BeanAndDtoTransfer.putBeanIntoDto(shop, ShopDto.class);
+		ShopDto shopDto = BeanAndDtoTransfer.transOneToAnoter(shop, ShopDto.class);
 		return shopDto;
 	}
 
@@ -126,9 +127,9 @@ public class ShopServiceImpl implements ShopService{
 	@Override
 	public ShopDto updateShop(ShopUpdateForm shopForm) {
 		//TODO 判断是否有权限更新此超市信息
-		Shop shop = BeanAndDtoTransfer.PutDtoIntoBean(shopForm, Shop.class);
+		Shop shop = BeanAndDtoTransfer.transOneToAnoter(shopForm, Shop.class);
 		this.shopDao.updateEntity(shop);
-		ShopDto shopDto = BeanAndDtoTransfer.putBeanIntoDto(shop, ShopDto.class);
+		ShopDto shopDto = BeanAndDtoTransfer.transOneToAnoter(shop, ShopDto.class);
 		return shopDto;
 	}
 
@@ -136,11 +137,11 @@ public class ShopServiceImpl implements ShopService{
 	 * 删除超市
 	 */
 	@Override
-	public void softDeleteShopById(Integer shopId) throws BaseException {
+	public void softDeleteShopById(Integer shopId) throws ShopServiceException {
 		//TODO 判断是否有权限删除此超市信息
 		Shop shop = this.shopDao.findEntityById(shopId);
 		if(null == shop){
-			throw new BaseException(300, "超市不存在");
+			throw new ShopServiceException(ShopServiceExceptionCode.SHOP_IS_NOT_FOUND);
 		}else{
 			shop.setIsDel(true);
 			this.shopDao.updateEntity(shop);
@@ -154,7 +155,7 @@ public class ShopServiceImpl implements ShopService{
 	public ShopDto getShopInfo(Integer shopId) {
 		if(null == shopId) return null;
 		Shop shop = this.shopDao.findEntityById(shopId);
-		ShopDto shopDto = BeanAndDtoTransfer.putBeanIntoDto(shop, ShopDto.class);
+		ShopDto shopDto = BeanAndDtoTransfer.transOneToAnoter(shop, ShopDto.class);
 		return shopDto;
 	}
 	

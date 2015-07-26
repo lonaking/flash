@@ -21,7 +21,7 @@ import com.flash.base.web.form.shop.ShopUpdateForm;
 import com.flash.base.web.response.BaseResponse;
 import com.flash.base.web.tool.query.ShopQuery;
 import com.flash.commons.earth.EarthUtils;
-import com.flash.exception.base.BaseException;
+import com.flash.shop.exception.ShopServiceException;
 import com.flash.shop.service.ShopService;
 import com.flash.ucenter.privilege.annotation.PrivilegeAccess;
 
@@ -132,7 +132,7 @@ public class ShopController {
 	 * @throws BaseException 
 	 */
 	@RequestMapping(value = "/shop_del",method = RequestMethod.POST)
-	public @ResponseBody BaseResponse<?> deleteShopSoft(@RequestParam(value="shop_id") Integer shopId) throws BaseException{
+	public @ResponseBody BaseResponse<?> deleteShopSoft(@RequestParam(value="shop_id") Integer shopId) throws ShopServiceException{
 		this.shopService.softDeleteShopById(shopId);
 		return new BaseResponse();
 	}

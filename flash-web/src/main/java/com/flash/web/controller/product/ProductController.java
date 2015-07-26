@@ -13,7 +13,7 @@ import com.flash.base.tool.page.Page;
 import com.flash.base.web.dto.ShopProductInfo;
 import com.flash.base.web.response.BaseResponse;
 import com.flash.base.web.tool.query.ShopProductQuery;
-import com.flash.exception.base.BaseException;
+import com.flash.product.exception.ProductServiceException;
 import com.flash.product.service.ShopProductService;
 
 @Controller
@@ -48,7 +48,7 @@ public class ProductController {
 	 * @throws BaseException 
 	 */
 	@RequestMapping(value = "/product_detail/{shopProductId}")
-	public @ResponseBody BaseResponse<ShopProductInfo> productDetail(@PathVariable int shopProductId) throws BaseException{
+	public @ResponseBody BaseResponse<ShopProductInfo> productDetail(@PathVariable int shopProductId) throws ProductServiceException{
 		ShopProductInfo productInfo = this.shopProductService.getProductDetail(shopProductId);
 		return new BaseResponse<ShopProductInfo>(productInfo);
 	}

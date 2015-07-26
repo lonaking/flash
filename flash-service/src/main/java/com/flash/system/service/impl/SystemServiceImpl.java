@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.flash.base.web.dto.system.VersionUpdateDto;
 import com.flash.base.web.form.system.CheckVersionForm;
+import com.flash.base.web.form.system.FeedBackForm;
 import com.flash.config.constant.SystemConstant;
 import com.flash.config.domain.Config;
 import com.flash.config.service.ConfigService;
@@ -25,6 +26,11 @@ public class SystemServiceImpl implements SystemService{
 		Config versionConfig = this.configService.selectOneConfigBySign(versionSign);
 		result.setCurrentVersion(versionConfig.getValue());
 		return result;
+	}
+	@Override
+	public void saveFeedBackInfo(FeedBackForm feedBackForm) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

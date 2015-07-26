@@ -2,6 +2,7 @@ package com.flash.system.service;
 
 import com.flash.base.web.dto.system.VersionUpdateDto;
 import com.flash.base.web.form.system.CheckVersionForm;
+import com.flash.base.web.form.system.FeedBackForm;
 
 /**
  * 系统级别的service
@@ -16,4 +17,11 @@ public interface SystemService {
 	 * @return
 	 */
 	public VersionUpdateDto checkVersion(CheckVersionForm versionForm);
+
+	/**
+	 * 保存意见反馈信息
+	 * @author lonaking
+	 * @param feedBackForm 保存意见反馈信息
+	 */
+	public void saveFeedBackInfo(FeedBackForm feedBackForm);
 }

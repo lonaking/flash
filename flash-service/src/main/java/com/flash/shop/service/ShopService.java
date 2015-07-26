@@ -8,7 +8,7 @@ import com.flash.base.web.dto.shop.ShopDto;
 import com.flash.base.web.form.shop.ShopAddForm;
 import com.flash.base.web.form.shop.ShopUpdateForm;
 import com.flash.base.web.tool.query.ShopQuery;
-import com.flash.exception.base.BaseException;
+import com.flash.shop.exception.ShopServiceException;
 
 public interface ShopService {
 
@@ -56,7 +56,7 @@ public interface ShopService {
 	 * @param shopId
 	 * @throws BaseException 
 	 */
-	public void softDeleteShopById(Integer shopId) throws BaseException;
+	public void softDeleteShopById(Integer shopId) throws ShopServiceException;
 
 	/**
 	 * 获取超市详细信息
